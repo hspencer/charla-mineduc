@@ -1,0 +1,26 @@
+{
+  "name": "charla-mineduc",
+  "version": "0.1.0",
+  "description": "Accesibilidad Cognitiva para los Servicios Públicos — Charla MINEDUC (Seremi Valparaíso), julio 2026. Presentación reveal.js",
+  "private": true,
+  "homepage": "https://hspencer.github.io/charla-mineduc/",
+  "license": "CC-BY-4.0",
+  "author": "Herbert Spencer <hspencer@ead.cl>",
+  "type": "module",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "p5": "^2.0.4",
+    "reveal.js": "^5.2.1"
+  },
+  "devDependencies": {
+    "sass": "^1.91.0",
+    "vite": "^7.0.6"
+  }
+}

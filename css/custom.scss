@@ -1,0 +1,1210 @@
+/**
+ * Estilos para "De la intención comunicativa al pictograma accesible"
+ * Derivados directamente de /cc (Confirmation of Candidature).
+ * Paleta: púrpura (#460556), naranja (#ff6600), terracota (#c73319), verde salvia (#c4cfb5).
+ * Tipografía: Lexend (sans) + EB Garamond (serif).
+ *
+ * Módulos Sass modernos: list.append y color.adjust reemplazan a las
+ * funciones globales append() y darken() que Dart Sass 3.0.0 retira.
+ */
+
+@use 'sass:list';
+@use 'sass:color';
+
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Lexend:wght@100..900&display=swap');
+
+/* === Variables === */
+$font-family-base: 'Lexend', sans-serif;
+$font-size-base: 1rem;
+$line-height-base: 1.45;
+
+$primary-color: #460556;
+$secondary-color: #ff6600;
+$terciary-color: #c73319;
+$color-text: rgb(17, 16, 19);
+$background-color: #c4cfb5;
+$color: #141414c2;
+
+/* === Mixins (heredados de /cc) === */
+
+/**
+ * Genera sombra larga escalonada (usada en títulos).
+ * Parámetros: pasos, desplazamiento x/y, desenfoque, color.
+ */
+@mixin long-shadow($steps: 50, $dx: 1px, $dy: 1px, $blur: 0, $color: rgba(0, 0, 0, .3)) {
+    $shadows: ();
+    @for $i from 1 through $steps {
+        $x: $i * $dx;
+        $y: $i * $dy;
+        $shadows: list.append($shadows, $x $y $blur $color, comma);
+    }
+    text-shadow: $shadows;
+}
+
+/**
+ * Genera drop-shadow escalonado para SVG (usada en ilustraciones del título).
+ */
+@mixin svg-shadow($steps: 50, $dx: 1px, $dy: 1px, $blur: 0, $color: rgba(0, 0, 0, .3)) {
+    $filters: "";
+    @for $i from 1 through $steps {
+        $x: $i * $dx;
+        $y: $i * $dy;
+        $filters: #{$filters} drop-shadow(#{$x} #{$y} #{$blur} #{$color});
+    }
+    filter: #{$filters};
+}
+
+/* === Base === */
+body {
+    font-family: $font-family-base;
+    font-size: $font-size-base;
+    line-height: $line-height-base;
+    color: $color;
+    background: $background-color;
+}
+
+a, a:visited { color: $terciary-color; }
+
+:root {
+    --r-background: #{$background-color};
+    --r-color: #{$color};
+    /* Un pelo más grande que el default de reveal (42px) para
+       ganar legibilidad de sala sin desbordar las diapositivas. */
+    --r-main-font-size: 44px;
+}
+
+/* === Reveal overrides === */
+.reveal .slide-background {
+    background-size: cover;
+    background-position: center;
+}
+
+
+.reveal {
+    .slides {
+        line-height: $line-height-base;
+        text-align: left;
+
+        /* --- Inversión para fondos oscuros --- */
+        .invert {
+            *, h2, h3, p { color: white; text-shadow: 1px 1px 2px #25013073; }
+            strong { color: white; }
+            a, a strong { color: $terciary-color; text-decoration: none; }
+        }
+
+        /* --- Divisor de partes (tipo Tarantino, heredado de /cc) --- */
+        h1.divider {
+            font-family: 'Lexend', sans-serif;
+            line-height: 100%;
+            text-align: center;
+            color: white;
+            font-size: 3rem;
+            font-weight: 300;
+            span {
+                font-family: Lexend;
+                color: $terciary-color;
+                text-transform: uppercase;
+                letter-spacing: .2ex;
+                font-weight: 500;
+                font-size: 1.1rem;
+            }
+        }
+
+        /* --- Encabezados --- */
+        h2, h3, h4, h5, h6 {
+            color: $terciary-color;
+            span { font-weight: 300; color: $color-text; }
+        }
+
+        /* --- Layouts de grilla --- */
+        .col-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+        }
+
+        .col-special {
+            display: grid;
+            grid-template-columns: 10fr 12fr;
+            align-items: center;
+        }
+
+        /* --- Imágenes y figuras (heredado de /cc) --- */
+        .image {
+            text-align: center;
+            img, svg {
+                display: inline-block;
+                padding: 0 10%;
+                max-width: 80%;
+            }
+            .legend {
+                font-family: 'EB Garamond';
+                font-size: 14px;
+                text-align: left;
+                ul li::marker { color: $terciary-color; }
+            }
+        }
+
+        .fit {
+            margin: 0 auto;
+            max-height: 80vh;
+            max-width: 90%;
+            height: auto;
+        }
+
+        /**
+         * Leyenda sobre imagen de fondo.
+         * Usa ::before para empujar el texto hacia abajo del slide.
+         */
+        .figure-legend {
+            font-family: 'EB Garamond';
+            font-size: 14px;
+            &::before { display: block; height: 55vh; content: " "; }
+        }
+
+        .figure-legend-img {
+            font-family: 'EB Garamond';
+            font-size: 1rem;
+            margin-top: 2em;
+        }
+
+        .overlay {
+            display: inline-block;
+            padding: 1ex 1em;
+            background-color: #ffffff96;
+            border-radius: .5ex;
+        }
+
+        /* --- Contenedor p5 --- */
+        .p5-host {
+            width: 100%;
+            height: 60vh;
+            max-height: 80vh;
+            background: transparent;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        /* --- Title slide (heredado de /cc) --- */
+        #s1-titulo {
+            .thought-bubble {
+                position: absolute;
+                right: -5%;
+                top: -22%;
+                width: 75%;
+
+                .illustration {
+                    width: 100%;
+                    @include svg-shadow(3, 1px, 1px, 0, rgba(0, 0, 0, 0.039));
+                }
+
+                /* Puntos de pensamiento: trail desde el título hacia la ilustración */
+                .thought-dot {
+                    position: absolute;
+                    border-radius: 50%;
+                    background: rgba($color-text, .08);
+                    border: 1px solid rgba($color-text, .06);
+                }
+                .dot-1 { width: 12px; height: 12px; bottom: -8%; left: 12%; }
+                .dot-2 { width: 20px; height: 20px; bottom: -2%; left: 18%; }
+                .dot-3 { width: 30px; height: 30px; bottom: 5%; left: 22%; }
+            }
+
+            .col-special {
+                margin: 38% 0 0 0;
+                grid-template-columns: 10fr 12fr;
+
+                .title {
+                    margin: 0;
+                    @include long-shadow(3, 1px, 1px, 0, rgba(0, 0, 0, 0.039));
+                    h1 {
+                        font-size: $font-size-base * 1.4;
+                        line-height: 140%;
+                        letter-spacing: .02ex;
+                        font-weight: 400;
+                        color: $color-text;
+
+                        /* "PICTOS.net" en rojo, tamaño x2.5 */
+                        span.app-name {
+                            display: block;
+                            font-weight: 700;
+                            font-size: 2.2em;
+                            line-height: 110%;
+                            color: $terciary-color;
+                            letter-spacing: -.02ex;
+                            margin-bottom: .15em;
+                        }
+                    }
+
+                    .author {
+                        margin: 1em 0 0 0;
+                        font-size: 75%;
+                    }
+                }
+
+                .credentials {
+                    align-self: end;
+                    .logos {
+                        display: flex;
+                        gap: 1.5em;
+                        align-items: center;
+                        justify-content: flex-end;
+                        img { height: 50px; }
+                    }
+                }
+            }
+
+            .footer {
+                display: flex;
+                align-items: baseline;
+                gap: .5em;
+                font-size: .7rem;
+                padding: 3rem 3rem 3rem 0;
+
+                .footer-label {
+                    text-transform: uppercase;
+                    font-size: .55rem;
+                    letter-spacing: .15ex;
+                    color: #999;
+                    font-weight: 400;
+                }
+            }
+        }
+
+        /* --- Globo de diálogo (speech bubble, heredado de /cc) --- */
+        .say {
+            .speech {
+                $bubble-bg: #ffffff;
+                $bubble-text: #180123;
+                $bubble-border: rgba($bubble-text, .2);
+                $bubble-border-width: 3px;
+                $bubble-radius: 1.3em;
+                $bubble-padding: 1em;
+                $bubble-font-size: 1.2rem;
+                $bubble-margin: 2em;
+                $shadow-color: rgba(41, 1, 51, 0.18);
+                $shadow: 0 4px 16px $shadow-color;
+                $tail-width: 1em;
+                $tail-left: 1.5em;
+
+                display: inline-block;
+                position: relative;
+                background: $bubble-bg;
+                color: $bubble-text;
+                font-size: $bubble-font-size;
+                padding: $bubble-padding;
+                border-radius: $bubble-radius;
+                margin: $bubble-margin;
+                border: $bubble-border-width solid $bubble-border;
+                box-shadow: $shadow;
+
+                &::before {
+                    content: ''; position: absolute;
+                    left: $tail-left; top: 100%;
+                    width: 0; height: 0;
+                    border: $tail-width solid transparent;
+                    border-top-color: $bubble-border;
+                    border-bottom: 0; border-left: 0;
+                    margin-left: -$bubble-border-width;
+                }
+                &::after {
+                    content: ''; position: absolute;
+                    left: $tail-left; top: calc(100% - $bubble-border-width);
+                    width: 0; height: 0;
+                    border: calc($tail-width - $bubble-border-width) solid transparent;
+                    border-top-color: $bubble-bg;
+                    border-bottom: 0; border-left: 0;
+                }
+            }
+        }
+
+        .speech {
+            $bubble-bg: #ffffff;
+            $bubble-text: #222;
+            $bubble-border: #0000004c;
+            $bubble-border-width: 2px;
+            $bubble-radius: 3ex;
+            $bubble-padding: 1em;
+            $bubble-font-size: 1rem;
+            $shadow-color: rgba(0, 0, 0, 0.25);
+            $tail-width: 1em;
+            $tail-left: 1.5em;
+
+            display: inline-block;
+            text-align: center;
+            position: relative;
+            background: $bubble-bg;
+            color: $bubble-text;
+            font-size: $bubble-font-size;
+            padding: $bubble-padding;
+            border-radius: $bubble-radius;
+            border: $bubble-border-width solid $bubble-border;
+            box-shadow: 0 4px 16px $shadow-color;
+
+            &::before {
+                content: ''; position: absolute;
+                left: $tail-left; top: 100%;
+                width: 0; height: 0;
+                border: $tail-width solid transparent;
+                border-top-color: $bubble-border;
+                border-bottom: 0; border-left: 0;
+                margin-left: -$bubble-border-width;
+            }
+            &::after {
+                content: ''; position: absolute;
+                left: $tail-left; top: calc(100% - $bubble-border-width);
+                width: 0; height: 0;
+                border: calc($tail-width - $bubble-border-width) solid transparent;
+                border-top-color: $bubble-bg;
+                border-bottom: 0; border-left: 0;
+            }
+        }
+
+        .card{
+            border: 1px solid transparentize($terciary-color, .7);
+            border-radius: .5ex;
+            padding: 1ex .7em;
+            margin-bottom: 1em;
+        }
+
+        /* --- Tablas --- */
+        table {
+            margin: 0 auto;
+            border-collapse: collapse;
+            th { border-bottom: .25ex solid $terciary-color; }
+        }
+
+        table.essence-mediafranca {
+            font-size: 85%;
+            width: 100%;
+            th {
+                vertical-align: bottom;
+                span { text-transform: uppercase; font-size: 70%; font-weight: 300; }
+                em { font-style: normal; color: $terciary-color; font-weight: 500; }
+                strong { font-size: 3rem; }
+            }
+            th:first-child, td:first-child { text-align: right; white-space: nowrap; }
+            td {
+                vertical-align: top;
+                em { font-style: normal; text-transform: uppercase; font-size: 70%; color: $terciary-color; }
+            }
+        }
+
+        table.gap {
+            thead tr th {
+                width: 25%;
+                text-align: center;
+                font-weight: 400;
+                text-transform: uppercase;
+                font-size: 90%;
+                color: $terciary-color;
+                padding-bottom: 1em;
+                img { width: 5em; }
+            }
+            tbody {
+                font-size: 80%;
+                tr td {
+                    vertical-align: top;
+                    ul {
+                        list-style: none;
+                        padding-left: 1em;
+                        li {
+                            position: relative;
+                            padding-left: 1.5em;
+                            margin-bottom: 1em;
+                            &.check::before {
+                                content: "✓"; color: rgb(3, 173, 3);
+                                font-weight: bold; font-size: 1.2em;
+                                position: absolute; left: 0; top: 0;
+                            }
+                            &.fail {
+                                color: rgb(208, 45, 8);
+                                &::before {
+                                    content: "✘"; color: rgb(208, 45, 8);
+                                    font-weight: bold; font-size: 1.2em;
+                                    position: absolute; left: 0; top: 0;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        /* --- Pipeline table (heredada de /cc) --- */
+        table.pipeline {
+            $pale-color: rgba($terciary-color, .1);
+            border-collapse: collapse;
+            width: 100%;
+            table-layout: fixed;
+
+            .speech {
+                $bubble-bg: #ffffff;
+                $bubble-text: #222;
+                $bubble-border: #0000004c;
+                $bubble-border-width: 2px;
+                $bubble-radius: 1.3ex;
+                $bubble-padding: 0.7ex 1.1ex;
+                $bubble-font-size: .91rem;
+
+                display: inline-block;
+                position: relative;
+                background: $bubble-bg;
+                color: $bubble-text;
+                font-size: $bubble-font-size;
+                padding: $bubble-padding;
+                border-radius: $bubble-radius;
+                border: $bubble-border-width solid $bubble-border;
+                box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+
+                &::before {
+                    content: ''; position: absolute;
+                    left: 1.5em; top: 100%;
+                    width: 0; height: 0;
+                    border: 1em solid transparent;
+                    border-top-color: $bubble-border;
+                    border-bottom: 0; border-left: 0;
+                    margin-left: -$bubble-border-width;
+                }
+                &::after {
+                    content: ''; position: absolute;
+                    left: 1.5em; top: calc(100% - $bubble-border-width);
+                    width: 0; height: 0;
+                    border: calc(1em - $bubble-border-width) solid transparent;
+                    border-top-color: $bubble-bg;
+                    border-bottom: 0; border-left: 0;
+                }
+            }
+
+            th, td { padding: 1rem .5rem; }
+            th {
+                background-color: $pale-color;
+                font-size: 14px;
+                font-weight: 700;
+                span { color: $terciary-color; }
+                border-bottom: none;
+            }
+            td {
+                font-size: 12px;
+                font-weight: 300;
+                vertical-align: top;
+                strong { font-weight: 500; }
+            }
+
+            th:nth-last-child(1) {
+                background-color: $terciary-color;
+                color: white;
+                border-radius: 0 1em 0 0;
+                font-size: 1.2rem;
+                font-weight: 300;
+            }
+            th:nth-child(1) { border-radius: 0 0 0 1em; }
+            td.start, td.end { height: 150px; vertical-align: middle; }
+            td.start {
+                background: linear-gradient(0deg, $pale-color 0%, rgba(255, 255, 255, 0) 100%);
+            }
+            td.end {
+                background: linear-gradient(180deg, $terciary-color 0%, rgba(255, 255, 255, 0) 100%);
+            }
+        }
+
+        /* --- NSM blocks (heredados de /cc) --- */
+        .nsm {
+            margin: 4em 0 0 0;
+            font-size: 60%;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(20em, 1fr));
+            gap: 1.5rem;
+            .block-name {
+                color: rgb(227, 227, 227);
+                font-size: .75rem;
+                font-weight: 380;
+                text-transform: uppercase;
+                letter-spacing: .2ex;
+                margin: 0 0 0.5em 0;
+                text-align: left;
+            }
+            .nsm-block {
+                margin: 0; padding: 0;
+                li {
+                    display: inline-block;
+                    background-color: gray;
+                    margin: .31ex .1ex;
+                    padding: 0 .5ex;
+                    border-radius: .3ex;
+                    font-size: 120%;
+                    text-shadow: .5px .5px 1px #ffffff73, -.5px -.5px 1px #00000057;
+                }
+                .d1 { background-color: #48ba06c9; }
+                .d2 { background-color: #96f704bd; }
+                .d3 { background-color: #e4f804ba; }
+                .d4 { background-color: #f78e04b4; }
+                .d5 { background-color: #c94001cc; }
+            }
+        }
+
+        /* --- NLU JSON viewer (heredado de /cc) --- */
+        .nlu {
+            $bg: #00000000;
+            $fg: #001225;
+            $key: #426a87;
+            $string: #a71c03;
+            $number: #ffa657;
+            $punct: #ff6600;
+            $brace: #4f4f4f;
+
+            font-size: 11px;
+            background: $bg;
+            color: $fg;
+            border-radius: 12px;
+            overflow: auto;
+            line-height: 1.15;
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+            code.language-json {
+                white-space: pre;
+                tab-size: 2;
+                .k { color: $key; }
+                .s { font-weight: 600; color: $string; }
+                .num { color: $number; }
+                .p { color: $punct; font-weight: 500; }
+                .b { color: $brace; font-weight: 500; }
+            }
+        }
+
+        /* --- Texto (heredado de /cc) --- */
+        p.smallcaps {
+            text-transform: uppercase;
+            color: $terciary-color;
+            letter-spacing: .1ex;
+
+            &.black{
+                color: $color-text;
+            }
+
+            &.bold{
+                font-weight: 700;
+            }
+        }
+
+        p.huge {
+            line-height: 170%;
+            font-size: 2.2rem;
+            padding: 0 2ex 0 .5em;
+            color: rgb(2, 32, 44);
+            span {
+                transform-origin: center;
+                transform: rotate(-1.5deg);
+                border-radius: 0.21ex;
+                display: inline-block;
+                padding: 0 0.23ex 0.123ex 0.27ex;
+                color: $terciary-color;
+                background-color: rgba($terciary-color, .1);
+                border: 0.013ex solid rgba($terciary-color, .2);
+                font-weight: 330;
+            }
+        }
+
+        p.question { font-weight: 310; line-height: 160%; }
+        p.small { font-size: 0.75rem; }
+        p.label {
+            margin: 0 4em;
+            font-size: 80%;
+            font-weight: 333;
+            font-family: 'EB Garamond';
+        }
+
+        .part {
+            img {}
+            p.label {
+                font-family: 'EB Garamond';
+                font-size: 14px;
+            }
+        }
+
+        /* --- Nota al pie (EB Garamond, como /cc) --- */
+        .footnote {
+            position: absolute;
+            bottom: 1em;
+            left: 2em; right: 2em;
+            font-family: 'EB Garamond';
+            font-size: 14px;
+            color: #888;
+            border-top: 1px solid color.adjust($background-color, $lightness: -10%);
+            padding-top: 0.4em;
+        }
+
+        /* --- Última diapositiva --- */
+        .last {
+            a, a:visited { color: $primary-color; font-weight: 600; }
+        }
+
+        .thumb {
+            position: relative;
+            max-width: 10em;
+            margin: 0 auto;
+        }
+
+        /* ====================================================
+           NUEVOS ESTILOS PARA LA VERSIÓN A POTENCIALES
+           PARTICIPANTES (audiencia de fonoaudiólogas)
+           ==================================================== */
+
+        /* El overlay oscuro de la Sección 2 se aplica directamente
+           al slide-background vía data-background con linear-gradient,
+           para que reveal lo extienda a toda la pantalla. Por eso aquí
+           no hay regla de overlay en CSS. */
+
+        /* --- Lista grande con un punto por línea (Sección 2) ---
+           La audiencia tiene que poder leer cada tema desde la última
+           fila de la sala, así que la tipografía es deliberadamente
+           grande y la descripción se presenta en un peso menor.
+        */
+        ol.big-list,
+        ul.big-list {
+            list-style: none;
+            padding: 0;
+            margin: 1.2em 1em 0;
+            counter-reset: bigitem;
+
+            li {
+                display: grid;
+                grid-template-columns: 2.2em 1fr;
+                gap: 0 .8em;
+                align-items: baseline;
+                margin-bottom: 1.1em;
+                counter-increment: bigitem;
+
+                &::before {
+                    content: counter(bigitem);
+                    grid-column: 1;
+                    font-family: 'Lexend', sans-serif;
+                    font-weight: 200;
+                    font-size: 2.4rem;
+                    line-height: 1;
+                    color: $terciary-color;
+                    text-align: right;
+                    padding-right: .25em;
+                }
+
+                .lead {
+                    grid-column: 2;
+                    display: block;
+                    font-family: 'Lexend', sans-serif;
+                    font-weight: 500;
+                    font-size: 1.9rem;
+                    line-height: 1.2;
+                    margin-bottom: .15em;
+                }
+                .desc {
+                    grid-column: 2;
+                    display: block;
+                    font-family: 'Lexend', sans-serif;
+                    font-weight: 350;
+                    font-size: 1.1rem;
+                    line-height: 1.4;
+                    opacity: .9;
+                    em { font-style: italic; opacity: .85; }
+                }
+            }
+
+            /* Variante invertida (sobre fondo oscuro de Sección 2) */
+            &.invert {
+                li {
+                    .lead, .desc { color: white; }
+                    .desc { color: rgba(255,255,255,.88); }
+                    &::before { color: $terciary-color; }
+                }
+            }
+        }
+
+        /* --- Fondo de la Sección 3 (tres preguntas) ---
+           Color sólido de la paleta. Nunca degradados parciales que
+           fragmenten visualmente la diapositiva.
+        */
+        .gradient-bg {
+            background: $background-color;
+        }
+        .reveal .slides section.gradient-bg {
+            background: $background-color;
+        }
+
+        /* --- Tres preguntas grandes (Sección 3) ---
+           Tipografía MUY grande. Cada pregunta lleva una etiqueta de
+           dimensión arriba (idea comunicativa, pragmáticas, respuesta
+           esperada) en versalitas pequeñas.
+        */
+        ol.three-questions {
+            list-style: none;
+            padding: 0;
+            margin: 1em .5em 0;
+            counter-reset: q;
+
+            li {
+                display: grid;
+                grid-template-columns: 2em 1fr;
+                gap: .2em .8em;
+                margin-bottom: 1.4em;
+                counter-increment: q;
+
+                &::before {
+                    content: counter(q);
+                    grid-row: 1 / 3;
+                    grid-column: 1;
+                    font-family: 'Lexend', sans-serif;
+                    font-weight: 200;
+                    font-size: 3.2rem;
+                    line-height: .9;
+                    color: $terciary-color;
+                    text-align: right;
+                    padding-right: .15em;
+                    align-self: start;
+                }
+
+                .dim-label {
+                    grid-column: 2;
+                    grid-row: 1;
+                    display: block;
+                    font-family: 'Lexend', sans-serif;
+                    text-transform: uppercase;
+                    letter-spacing: .15ex;
+                    font-size: .8rem;
+                    font-weight: 500;
+                    color: $terciary-color;
+                    margin-bottom: .15em;
+                }
+
+                p {
+                    grid-column: 2;
+                    grid-row: 2;
+                    margin: 0;
+                    font-family: 'Lexend', sans-serif;
+                    font-weight: 350;
+                    font-size: 2.2rem;
+                    line-height: 1.18;
+                    color: $color-text;
+
+                    em {
+                        font-style: italic;
+                        font-weight: 400;
+                    }
+                }
+            }
+        }
+
+        /* --- Tabla de participantes Fase 1 (Sección 5) ---
+           Diseño tranquilo, sin colores fuertes. La función de la
+           tabla es legitimar, no llamar la atención.
+        */
+        table.participants {
+            width: 90%;
+            margin: 0 auto;
+            font-size: .95rem;
+            border-collapse: collapse;
+
+            thead th {
+                font-family: 'Lexend', sans-serif;
+                text-transform: uppercase;
+                letter-spacing: .1ex;
+                font-size: .7rem;
+                color: $terciary-color;
+                font-weight: 500;
+                padding: .4em .8em;
+                border-bottom: 1px solid $terciary-color;
+                text-align: left;
+            }
+            tbody td {
+                padding: .55em .8em;
+                border-bottom: 1px solid #e8e4dc;
+                vertical-align: top;
+            }
+            tbody td:last-child {
+                font-family: 'Lexend', sans-serif;
+                font-variant-numeric: tabular-nums;
+                color: #555;
+            }
+        }
+
+        /* --- Lista de roadmap (Sección 5.2) y de invitación (Sección 6) ---
+           Misma estructura que big-list pero sin numerar (uso una marca
+           tipográfica antes del lead) y a tamaño un poco menor.
+        */
+        ol.roadmap-list,
+        ul.invitation-list {
+            list-style: none;
+            padding: 0;
+            margin: .8em 1em 0;
+
+            li {
+                display: block;
+                margin-bottom: 1em;
+                padding-left: 1.2em;
+                position: relative;
+
+                &::before {
+                    content: "";
+                    position: absolute;
+                    left: 0;
+                    top: .8em;
+                    width: .55em;
+                    height: .55em;
+                    background: $terciary-color;
+                    border-radius: 50%;
+                }
+
+                .lead {
+                    display: block;
+                    font-family: 'Lexend', sans-serif;
+                    font-weight: 500;
+                    font-size: 1.4rem;
+                    line-height: 1.25;
+                    color: $color-text;
+                    margin-bottom: .15em;
+                }
+                .desc {
+                    display: block;
+                    font-family: 'Lexend', sans-serif;
+                    font-weight: 350;
+                    font-size: 1.0rem;
+                    line-height: 1.4;
+                    color: #444;
+                    em { font-style: italic; color: $terciary-color; }
+                    code {
+                        font-family: 'Menlo', monospace;
+                        font-size: .9em;
+                        background: rgba($terciary-color, .08);
+                        padding: 0 .3em;
+                        border-radius: .25ex;
+                    }
+                }
+            }
+        }
+
+    }
+}
+
+/* === Utility classes (heredadas de /cc) === */
+.xl { font-size: 150%; li { margin-bottom: 1em; } }
+.sm { font-size: 70%; }
+.xs { font-size: 60%; }
+.uc { text-transform: uppercase; }
+.center { text-align: center; }
+.w { background-color: white; }
+.zoom125 { zoom: 1.25; }
+.zoom133 { zoom: 1.33; }
+.zoom166 { zoom: 1.66; }
+
+iframe { border: 0 !important; }
+
+/* === Zoom para iframe de pictogramas.pictos.cl === */
+.reveal .slide-background-content iframe[src*="pictogramas.pictos.cl"] {
+    transform: scale(1.4);
+    transform-origin: center top;
+}
+
+/* === SVG-code sync (diapo estética de la accesibilidad) === */
+.code-node.is-selected {
+    background: rgba(254, 94, 1, 0.195);
+    outline: 1px solid $terciary-color;
+    border-radius: .6ex;
+}
+
+svg .is-selected {
+    filter: drop-shadow(0 0 2px $terciary-color);
+}
+
+/* =========================================================
+   Portada heredada de /cc (#title-slide): ilustración
+   flotante, título en mayúsculas con destaque terracota,
+   créditos en grilla y footer con logos.
+   Se usa en la primera diapositiva de charla-mineduc.
+   ========================================================= */
+.reveal .slides {
+
+    #title-slide {
+
+        .illustration {
+            position: absolute;
+            width: 66%;
+            left: 33%;
+            top: -18%;
+            @include svg-shadow(3, 1px, 1px, 0, rgba(0, 0, 0, 0.039));
+        }
+
+        .col-special {
+            margin: 30% 0 0 0;
+
+            .title {
+                /* Baja el título ~un renglón respecto de la ilustración */
+                margin: 1.5em 0 0 0;
+                @include long-shadow(3, 1px, 1px, 0, rgba(0, 0, 0, 0.039));
+
+                h1 {
+                    text-transform: uppercase;
+                    font-size: $font-size-base * 1.25;
+                    line-height: $font-size-base * 2;
+                    letter-spacing: .15ex;
+                    font-weight: 350;
+
+                    span {
+                        display: block;
+                        font-weight: 700;
+                        color: $terciary-color;
+                    }
+                }
+            }
+
+            .credentials {
+                display: grid;
+                font-size: 75%;
+                line-height: 160%;
+                grid-template-columns: 1fr 1fr;
+                margin: 5.5em 0 0 0;
+
+                .author,
+                .context {
+                    dt {
+                        font-size: .6rem;
+                        color: $terciary-color;
+                        text-transform: uppercase;
+                        font-weight: 600;
+                        margin: 2em 0 0 0;
+                    }
+                    dl {
+                        margin: 0 0 0 2em;
+                        span {
+                            position: relative;
+                            font-size: 70%;
+                            top: -1ex;
+                            text-transform: uppercase;
+                        }
+                    }
+                }
+            }
+        }
+
+        .footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: .7rem;
+            padding: 3rem 3rem 3rem 0;
+
+            .logos {
+                display: flex;
+                gap: 1.5em;
+                align-items: center;
+                img { height: 48px; }
+            }
+        }
+    }
+
+    /* Leyenda bajo los sketches p5 (p.ej. la campana de Gauss) */
+    .caption {
+        font-family: 'EB Garamond', serif;
+        font-size: .85rem;
+        color: rgba(17, 16, 19, .75);
+        margin-top: .6em;
+    }
+}
+
+/* =========================================================
+   Lanzador de demos (#s6-launcher): pantalla de marca sobre
+   púrpura oscuro con las tres aplicaciones como tarjetas que
+   se abren en pestaña nueva (pictos.net no se deja embeber
+   en iframe). Se usa en la parte práctica de charla-mineduc.
+   ========================================================= */
+.reveal .slides {
+
+    .launcher {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1.6em;
+        padding-top: 1em;
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 1em;
+
+            img { height: 90px; }
+
+            h2 {
+                color: white;
+                font-weight: 300;
+                letter-spacing: .12ex;
+                margin: 0;
+            }
+        }
+
+        .apps {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.2em;
+            width: 92%;
+
+            a {
+                display: flex;
+                flex-direction: column;
+                gap: .6em;
+                padding: 1.2em 1em 1.4em 1em;
+                border-radius: 14px;
+                background: rgba(255, 255, 255, .07);
+                border: 1px solid rgba(255, 255, 255, .22);
+                text-decoration: none;
+                text-align: center;
+                transition: transform .18s ease, background .18s ease;
+
+                strong {
+                    color: white;
+                    font-size: 1.05rem;
+                    line-height: 120%;
+                    letter-spacing: .02ex;
+                }
+
+                span {
+                    color: rgba(255, 255, 255, .72);
+                    font-size: .62rem;
+                    line-height: 145%;
+                    font-weight: 300;
+                }
+
+                &:hover {
+                    transform: translateY(-4px);
+                    background: rgba(255, 255, 255, .14);
+                }
+            }
+        }
+
+        .hint {
+            color: rgba(255, 255, 255, .45);
+            font-size: .55rem;
+            text-transform: uppercase;
+            letter-spacing: .15ex;
+        }
+    }
+}
+
+/* =========================================================
+   Ajustes de la charla-mineduc (ronda 2)
+   ========================================================= */
+.reveal .slides {
+
+    /* --- Listas más aireadas y textos un pelo mayores --- */
+    ul, ol {
+        li {
+            margin: .5em 0;
+            line-height: 1.5;
+        }
+    }
+    p { line-height: 1.5; }
+
+    /* --- Variante verde del destaque de p.huge para
+           'apoyos razonables' (Ley 21.545) --- */
+    p.huge span.green {
+        color: #2f6b44;
+        background-color: rgba(47, 107, 68, .1);
+        border: 0.013ex solid rgba(47, 107, 68, .25);
+    }
+
+    /* --- Diagrama de flujo del acto administrativo (s4-actos):
+           Usuario → Estado → Acto Administrativo. HTML/CSS,
+           sencillo y consistente con la paleta del deck. --- */
+    .flow {
+        display: grid;
+        grid-template-columns: 1fr auto 1fr auto 1fr;
+        align-items: stretch;
+        gap: .5em;
+        margin: 1.2em 0 .6em 0;
+
+        .step {
+            border-radius: 14px;
+            padding: 1em .9em 1.1em .9em;
+            border: 1.5px solid;
+
+            .who {
+                text-transform: uppercase;
+                letter-spacing: .12ex;
+                font-size: .62rem;
+                font-weight: 600;
+                display: block;
+                margin-bottom: .35em;
+            }
+            .what { font-weight: 700; font-size: 1.05rem; line-height: 120%; }
+            .how { font-size: .72rem; line-height: 145%; margin-top: .4em; }
+
+            &.user {
+                background: rgba(70, 5, 86, .08);
+                border-color: rgba(70, 5, 86, .35);
+                .who { color: #460556; }
+            }
+            &.state {
+                background: rgba(17, 16, 19, .05);
+                border-color: rgba(17, 16, 19, .25);
+                .who { color: #3a5a40; }
+            }
+            &.act {
+                background: rgba(236, 98, 27, .12);
+                border-color: rgba(236, 98, 27, .45);
+                .who { color: #c73319; }
+            }
+        }
+
+        .arrow {
+            align-self: center;
+            font-size: 1.6rem;
+            color: $terciary-color;
+            font-weight: 300;
+        }
+    }
+}
+
+/* =========================================================
+   Fondos de color por sección: marcan el avance narrativo
+   de una sección a la siguiente, manteniendo contraste con
+   la tinta oscura. reveal pinta el fondo desde el
+   data-background-color de cada diapositiva; estos tonos son
+   tintes suaves derivados de la paleta del deck.
+   (Referencia de tonos, aplicados en el HTML.)
+     S1 Ley .............. #dbe7d6  verde suave
+     S2 Servicios ........ #f1ebdb  crema
+     S3 Problema ......... #e6dee9  lila
+     S4 Trámite .......... #ece2d0  arena
+     S5 Apoyos visuales .. #dbe4ea  azul grisáceo
+     S6 Práctica ......... #ece4d6  cálido
+   ========================================================= */
+
+/* =========================================================
+   s5 · Cuatro argumentos ilustrados. Cada tarjeta lleva una
+   imagen (fondo blanco) fundida con mix-blend-mode: multiply
+   para integrarse al tinte de la sección sin caja blanca.
+   ========================================================= */
+.reveal .slides {
+
+    .arg-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1em 1.8em;
+        align-items: start;
+        margin-top: .6em;
+
+        .arg {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 1em;
+            align-items: center;
+
+            img {
+                width: 118px;
+                height: 118px;
+                object-fit: contain;
+                border-radius: 1ex;
+                border: 2px solid black;
+            }
+
+            h3 { margin: 0 0 .2em 0; }
+            p { margin: 0; font-size: .82rem; line-height: 1.4; }
+        }
+    }
+}
