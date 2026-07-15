@@ -11,8 +11,18 @@
 
 import { defineConfig } from 'vite';
 import path from 'path';
+import fs from 'fs';
+
+// Plugin: escribe docs/.nojekyll para que GitHub Pages no filtre assets/_*
+const nojekyll = () => ({
+  name: 'nojekyll',
+  closeBundle() {
+    fs.writeFileSync('docs/.nojekyll', '');
+  }
+});
 
 export default defineConfig({
+  plugins: [nojekyll()],
   base: '/charla-mineduc/',
   resolve: {
     alias: {

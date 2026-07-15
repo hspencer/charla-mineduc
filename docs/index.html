@@ -1,0 +1,555 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Accesibilidad Cognitiva para los Servicios Públicos</title>
+  <meta name="description" content="Charla sobre accesibilidad cognitiva, apoyos razonables (Ley 21.545) y apoyos visuales para servicios públicos. MINEDUC, julio 2026.">
+  <meta name="author" content="Herbert Spencer González">
+  <meta name="DC.title" content="Accesibilidad Cognitiva para los Servicios Públicos">
+  <meta name="DC.creator" content="Herbert Spencer González">
+  <meta name="DC.rights" content="CC BY 4.0">
+  <meta name="DC.language" content="es-CL">
+  <link rel="icon" type="image/svg+xml" href="svg/favicon-a11y.svg">
+  <!-- p5 vendorizado localmente (public/p5/p5.min.js) para no depender
+       de la red del auditorio durante la charla -->
+  <script src="p5/p5.min.js" defer></script>
+  <script defer src="p5/sketches.js"></script>
+  <script type="module" crossorigin src="/charla-mineduc/assets/index-CFIVVSlL.js"></script>
+  <link rel="stylesheet" crossorigin href="/charla-mineduc/assets/index-B38xOscS.css">
+</head>
+
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- =========================================================
+           ESTRUCTURA: columnas horizontales = secciones narrativas;
+           dentro de cada columna, diapositivas verticales.
+           → cambia de sección · ↓ recorre la sección actual.
+           Portada y cierre son columnas independientes.
+           ========================================================= -->
+
+
+      <!-- ===== PORTADA (heredada de /cc) ===== -->
+      <section data-background-color="#FFF" data-transition="concave" id="title-slide">
+        <object type="image/svg+xml" data="svg/title-illustration.svg" class="illustration"
+          alt="Ilustración: globo de pensamiento con pictogramas"></object>
+
+        <div class="col-special">
+          <div class="title">
+            <h1><span>Accesibilidad Cognitiva</span>para los Servicios Públicos</h1>
+          </div>
+
+          <div class="credentials">
+            <div class="author">
+              <dt>Presenta</dt>
+              <dl><strong>Herbert Spencer González</strong><br>
+                <span>Núcleo de Accesibilidad e Inclusión PUCV</span>
+              </dl>
+            </div>
+            <div class="context">
+              <dt>Contexto</dt>
+              <dl>Secretaría Regional Ministerial de Educación</dl>
+              <dl>Viña del Mar · julio 2026</dl>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer">
+          <span>esta presentación vive en <a href="https://herbertspencer.net/charla-mineduc">herbertspencer.net/charla-mineduc</a></span>
+          <div class="logos">
+            <img src="images/pucv-logo.png" alt="PUCV">
+            <img src="svg/logo-pictos-cl.svg" alt="pictos.cl">
+            <img src="svg/pictos-iso.svg" alt="pictos.net">
+          </div>
+        </div>
+
+        <aside class="notes">
+          Buenos días. Soy Herbert Spencer, diseñador de interacción, del
+          Núcleo de Accesibilidad e Inclusión de la PUCV. En estos minutos
+          quiero mostrarles cómo el diseño puede hacer que los servicios
+          públicos se entiendan — y por qué eso es exactamente lo que la
+          Ley 21.545 nos pide.
+        </aside>
+      </section>
+
+
+      <!-- =========================================================
+           SECCIÓN 1 — LEY 21.545: LOS APOYOS RAZONABLES
+           1.1 pregunta · 1.2 campana de Gauss animada
+           ========================================================= -->
+      <section>
+
+        <!-- 1.1 La pregunta -->
+        <section id="s1-ley" data-background-color="#dbe7d6">
+          <p class="smallcaps">Ley 21.545 (2023)</p>
+          <p class="huge">
+            Los <span class="green">apoyos razonables</span>:
+            ¿qué son y por qué son necesarios?
+          </p>
+          <aside class="notes">
+            La Ley 21.545 establece que las personas del espectro autista
+            tienen derecho a apoyos y ajustes razonables en su trato con el
+            Estado — en lo social, en salud y en educación. Pero antes de
+            hablar de apoyos, quiero cuestionar una imagen mental que todos
+            cargamos: la de la "persona promedio" para la cual diseñamos
+            los servicios.
+          </aside>
+        </section>
+
+        <!-- 1.2 Campana de Gauss animada -->
+        <section id="s1-gauss" data-background-color="#dbe7d6">
+          <div class="p5-host" data-sketch="gauss" style="height: 65vh;"></div>
+          <p class="caption fragment">
+            La campana es solo el promedio de toda la población: los individuos que
+            lo componen son muy variados. Y la escala es unidimensional — para la
+            educación, esa visión es altamente limitante.
+          </p>
+          <aside class="notes">
+            Cada punto que cae es una persona: formas y colores distintos,
+            porque la población es diversa. Al acumularse aparece la famosa
+            campana — pero la campana describe al conjunto, nadie es el
+            promedio. Y ojo con el eje: mide una sola dimensión a la vez.
+            Cuando cambio la dimensión — comprensión lectora, atención,
+            interacción social — las mismas personas se reordenan por
+            completo. Miren a la persona destacada: extrema en una
+            dimensión, promedio en otra. Por eso los apoyos razonables no
+            son para "los que están lejos del promedio": son el
+            reconocimiento de que el promedio no existe.
+          </aside>
+        </section>
+
+      </section>
+
+
+      <!-- =========================================================
+           SECCIÓN 2 — LOS SERVICIOS SON LA SUMA DE SUS TRANSACCIONES
+           ========================================================= -->
+      <section>
+
+        <!-- 2.1 Definición -->
+        <section id="s2-transacciones" data-background-color="#f1ebdb">
+          <p class="smallcaps">una definición operativa</p>
+          <p class="huge">
+            Los servicios son la <span>suma de sus transacciones</span>
+          </p>
+          <p>Las transacciones son la forma de entregar un <strong>valor</strong> a la persona.</p>
+          <aside class="notes">
+            Definición operativa: un servicio es la colección de todas sus
+            transacciones, y una transacción es la forma en que el servicio
+            entrega valor a la persona. Suena obvio, pero pocas
+            instituciones tienen la lista completa de lo que entregan.
+          </aside>
+        </section>
+
+        <!-- 2.2 Ejemplos de valor -->
+        <section id="s2-valor" data-background-color="#f1ebdb">
+          <p class="smallcaps">¿qué valor entrega un servicio?</p>
+          <div class="col-2" style="gap: 1.5em;">
+            <div>
+              <h3>Un producto</h3>
+              <ul>
+                <li>un certificado de alumno regular</li>
+                <li>una matrícula</li>
+                <li>un beneficio (beca, subsidio)</li>
+                <li>una credencial, un carné</li>
+              </ul>
+            </div>
+            <div>
+              <h3>Una experiencia</h3>
+              <ul>
+                <li>un viaje en el metro</li>
+                <li>una consulta médica</li>
+                <li>una clase, una biblioteca abierta</li>
+                <li>una audiencia, una atención en ventanilla</li>
+              </ul>
+            </div>
+          </div>
+          <!-- TODO: reemplazar listas por pictogramas de pictogramas.pictos.cl -->
+          <aside class="notes">
+            El valor puede ser un producto — la mayoría de las veces: un
+            certificado, una matrícula, un beneficio. O puede ser una
+            experiencia: un viaje en metro, una consulta, una clase.
+            Mientras más variados los ejemplos, mejor se entiende que todo
+            servicio se puede describir así.
+          </aside>
+        </section>
+
+      </section>
+
+
+      <!-- =========================================================
+           SECCIÓN 3 — EL PROBLEMA: LA ACCESIBILIDAD ES DISEÑO
+           ========================================================= -->
+      <section>
+
+        <!-- 3.1 El problema -->
+        <section id="s3-problema" data-background-color="#e6dee9">
+          <p class="smallcaps">¿el problema?</p>
+          <p class="huge">
+            Si los servicios son inaccesibles, hay personas que
+            <span>no acceden al valor</span>
+          </p>
+          <aside class="notes">
+            Si el servicio no se entiende, el valor no llega: el derecho
+            existe en el papel pero no en la experiencia. Y esto no es un
+            problema de las personas — es un problema de diseño.
+          </aside>
+        </section>
+
+        <!-- 3.2 Esquema animado: accesibilidad como interacción -->
+        <section id="s3-interaccion" data-background-color="#e6dee9">
+          <p class="smallcaps">la accesibilidad es un problema de diseño</p>
+          <div class="p5-host" data-sketch="interaccion" style="height: 62vh;"></div>
+          <p class="caption fragment">
+            Accesibilidad: la interacción entre las capacidades individuales y el
+            medioambiente construido. Esa mitad la podemos diseñar — por varios canales,
+            de distintas formas, para personas diversas.
+          </p>
+          <aside class="notes">
+            La accesibilidad no es un atributo de la persona: es la
+            interacción entre las capacidades individuales y las barreras o
+            facilitadores del entorno construido. La primera mitad no la
+            controlamos. La segunda mitad — los formularios, la señalética,
+            el lenguaje, los pasos del trámite — esa la diseñamos nosotros.
+            Por lo tanto, podemos construir para la accesibilidad.
+          </aside>
+        </section>
+
+      </section>
+
+
+      <!-- =========================================================
+           SECCIÓN 4 — ANTES QUE LOS PICTOGRAMAS: EL TRÁMITE
+           ========================================================= -->
+      <section>
+
+        <!-- 4.1 (No) estandarización -->
+        <section id="s4-estandarizacion" data-background-color="#ece2d0">
+          <p class="smallcaps">antes que los pictogramas: un trámite</p>
+          <p class="huge">
+            <span>(No)</span> existe una estandarización de los procesos
+          </p>
+          <p>
+            <a href="https://doc.digital.gob.cl/">DocDigital</a> — una muy buena
+            iniciativa de comunicaciones oficiales del Estado.
+          </p>
+          <aside class="notes">
+            Cuando llegamos a un servicio a implementar apoyos, lo primero
+            que descubrimos es que no existe una manera estándar de
+            describir los propios procesos. DocDigital es una muy buena
+            iniciativa en esa dirección — pero opera en el plano documental
+            del Estado, no en la experiencia de la persona.
+          </aside>
+        </section>
+
+        <!-- 4.2 La transacción en el lenguaje del Estado -->
+        <section id="s4-actos" data-background-color="#ece2d0">
+          <p class="smallcaps">la transacción, en el lenguaje del Estado</p>
+          <p>
+            La <a href="https://nuevo.leychile.cl/navegar?idNorma=1138479">Ley 21.180</a>
+            de Transformación Digital no adopta el lenguaje comercial de las
+            "transacciones": estructura el intercambio de valor bajo una lógica
+            <strong>jurídica y de procesos</strong>. La entrega de valor es una
+            <strong>Prestación Institucional</strong>, y el medio para canalizarla
+            es el <strong>Procedimiento Administrativo</strong>.
+          </p>
+          <div class="flow">
+            <div class="step user">
+              <span class="who">lo que hace el usuario</span>
+              <span class="what">Presentación</span>
+              <span class="how">solicitud o ingreso electrónico: inicia el trámite
+                y aporta antecedentes en un mesón virtual</span>
+            </div>
+            <div class="arrow">→</div>
+            <div class="step state">
+              <span class="who">lo que hace el Estado</span>
+              <span class="what">Tramitación</span>
+              <span class="how">instrucción y actuación administrativa: verifica
+                requisitos e interopera con otras bases del Estado</span>
+            </div>
+            <div class="arrow">→</div>
+            <div class="step act">
+              <span class="who">el entregable de valor</span>
+              <span class="what">Acto Administrativo</span>
+              <span class="how">resolución, decreto u otorgamiento del beneficio,
+                con firma electrónica</span>
+            </div>
+          </div>
+          <p class="small">
+            El "valor" no es solo el producto final: es la garantía jurídica de
+            <strong>certeza, transparencia, ciberseguridad y velocidad</strong> al
+            procesar los datos de las personas.
+          </p>
+          <aside class="notes">
+            Una precisión importante para esta audiencia: cuando nosotros
+            decimos "transacción", el Estado dice otra cosa. La Ley 21.180 no
+            usa lenguaje comercial: habla de prestación institucional y de
+            procedimiento administrativo. Y separa con claridad quién hace
+            qué. Lo que hace el usuario se llama Presentación o ingreso: inicia
+            y aporta antecedentes. Lo que hace el Estado se llama Tramitación:
+            verifica e interopera — idealmente sin pedirle a la persona datos
+            que ya tiene. Y el resultado es el Acto Administrativo: la
+            resolución firmada, el beneficio otorgado. Nuestro trabajo con
+            apoyos hace visible y comprensible esta cadena que la ley
+            estructura pero no siempre transparenta al usuario.
+          </aside>
+        </section>
+
+        <!-- 4.3 Paso a paso en lenguaje llano -->
+        <section id="s4-lenguaje-llano" data-background-color="#ece2d0">
+          <h2>Una descripción <span>paso-a-paso</span> en lenguaje llano</h2>
+          <ul>
+            <li>En el lenguaje de la persona, <strong>no en la jerga interna</strong> del servicio</li>
+            <li>Secuencias de apoyos visuales y procedimentales</li>
+            <li>Idealmente nueve pasos o menos</li>
+          </ul>
+          <aside class="notes">
+            El primer apoyo no es un dibujo: es la descripción paso a paso
+            del trámite en lenguaje llano. Si el paso no se puede decir
+            simple, el problema no es la redacción: es el trámite.
+          </aside>
+        </section>
+
+        <!-- 4.4 Evidencia: tecnología y autodeterminación -->
+        <section id="s4-evidencia" data-background-color="#ece2d0">
+          <p class="smallcaps">trabajos recientes en la literatura científica delinean estos principios</p>
+          <h3>Tecnología y autodeterminación en la adultez autista</h3>
+          <ul style="font-size: .9em;">
+            <li>la tecnología como <strong>contexto para tomar decisiones</strong></li>
+            <li><strong>andamiajes digitales</strong> para planificar, dosificar y re-planificar</li>
+            <li>empoderamiento mediante <strong>retroalimentación calibrada</strong> a metas personales</li>
+            <li>autonomía negociada como <strong>interdependencia consentida</strong></li>
+            <li><strong>barreras y tensiones éticas</strong> que socavan el control</li>
+          </ul>
+          <p style="font-size: .55em; margin-top: 1.2em;">
+            Álvarez-Aguado, I., Muñoz La Rivera, F., Vega, V., Figueroa-Figueroa, J., Roselló-Peñaloza, M.,
+            González-Carrasco, F., Arriagada-Chinchón, R., Espinosa Parra, F., Spencer, H., &amp; Farhang, M. (2026).
+            From access to agency: How assistive and emerging technologies mediate self-determination in autistic
+            adulthood. <em>Disability and Rehabilitation: Assistive Technology, 21</em>(4), 1248-1262.
+            <a href="https://doi.org/10.1080/17483107.2025.2586641">doi:10.1080/17483107.2025.2586641</a>
+          </p>
+          <aside class="notes">
+            Esto no es solo intuición de diseño: trabajos recientes en la
+            literatura científica delinean estos principios. En nuestro
+            estudio de este año sobre adultez autista encontramos que la
+            tecnología media la autodeterminación de cinco maneras — como
+            contexto para elegir, como andamiaje para planificar y
+            re-planificar, como retroalimentación calibrada a metas propias,
+            como interdependencia consentida, y también como fuente de
+            barreras y tensiones éticas cuando socava el control de la persona.
+          </aside>
+        </section>
+
+      </section>
+
+
+      <!-- =========================================================
+           SECCIÓN 5 — APOYOS VISUALES Y PICTOGRAMAS
+           ========================================================= -->
+      <section>
+
+        <!-- 5.1 Por qué los apoyos visuales — cuatro argumentos -->
+        <section id="s5-por-que" data-background-color="#dbe4ea">
+          <p class="smallcaps bold black">¿por qué los apoyos visuales son importantes?</p>
+          <div class="arg-grid">
+            <div class="arg">
+              <img src="images/s5/procesamiento-visual.png" alt="">
+              <div>
+                <h3>1 · Procesamiento visual</h3>
+                <p>En buena parte de la población autista, el procesamiento visual
+                  es una <strong>fortaleza relativa</strong> frente al lenguaje verbal.</p>
+              </div>
+            </div>
+            <div class="arg">
+              <img src="images/s5/permanencia.png" alt="">
+              <div>
+                <h3>2 · Memoria externa</h3>
+                <p>A diferencia del habla, efímera, el pictograma <strong>permanece</strong>.
+                  Funciona como memoria de trabajo externalizada.</p>
+              </div>
+            </div>
+            <div class="arg">
+              <img src="images/s5/rima.png" alt="">
+              <div>
+                <h3>3 · Rima semántica</h3>
+                <p>Lo verbal y lo visual <strong>se alinean</strong> y la carga cognitiva
+                  baja: texto, ícono y pictograma dicen lo mismo, al mismo tiempo.</p>
+              </div>
+            </div>
+            <div class="arg">
+              <img src="images/s5/abstraccion.png" alt="">
+              <div>
+                <h3>4 · Abstracción ontológica</h3>
+                <p>El pictograma destila la <strong>esencia</strong> de una acción u objeto
+                  en formas y relaciones espaciales.</p>
+              </div>
+            </div>
+          </div>
+          <aside class="notes">
+            Cuatro razones bien distintas. Uno: en buena parte de la
+            población autista el procesamiento visual es una fortaleza
+            relativa. Dos, y esto vale para todos: el habla es efímera, se
+            desvanece; el pictograma permanece. Funciona como una memoria de
+            trabajo externa — la persona no tiene que retener el mensaje en
+            tiempo real para poder actuar, lo procesa a su ritmo, y eso baja
+            la ansiedad y sostiene la autonomía. Tres: la rima semántica —
+            texto e imagen alineados bajan la carga cognitiva. Y cuatro, más
+            de fondo: un buen pictograma destila la esencia de la acción en
+            formas y relaciones espaciales; elude la sintaxis del idioma, no
+            depende de saber leer. Por eso es una infraestructura de acceso
+            verdaderamente universal.
+          </aside>
+        </section>
+
+        <!-- 5.2 Tres principios -->
+        <section id="s5-principios" data-background-color="#dbe4ea">
+          <p class="smallcaps">¿cómo se diseña un pictograma accesible?</p>
+          <ol>
+            <li class="fragment">
+              <strong>Semántica en capas</strong>: la acción (qué hace la persona),
+              el elemento (con qué infraestructura interactúa) y el contexto (dónde ocurre).
+              Juntas forman una instrucción visual coherente.
+            </li>
+            <li class="fragment">
+              <strong>Secuencia</strong>: los pictogramas no viven solos; se despliegan
+              como cadena de pasos que narra la transacción completa, idealmente nueve o menos.
+            </li>
+            <li class="fragment">
+              <strong>Correlación estricta con el lenguaje llano</strong>: cada paso tiene
+              una frase simple que dice exactamente lo que el pictograma muestra.
+              Si no se puede decir simple, el problema no es el dibujo: es el trámite.
+            </li>
+          </ol>
+          <aside class="notes">
+            Tres principios. Uno: semántica en capas — acción, elemento,
+            contexto. Dos: secuencia — el pictograma vive en una cadena de
+            pasos que narra la transacción completa. Tres: correlación
+            estricta con el lenguaje llano — y si un paso no se puede decir
+            simple, el problema es el trámite, no el dibujo.
+          </aside>
+        </section>
+
+      </section>
+
+
+      <!-- =========================================================
+           SECCIÓN 6 — PARTE PRÁCTICA: DEMOS EN IFRAME
+           ========================================================= -->
+      <section>
+
+        <!-- 6.1 Casos de pictos.cl -->
+        <section id="s6-pictos-cl" data-background-color="#ece4d6">
+          <p class="smallcaps">parte práctica</p>
+          <p class="huge">Casos de <span>pictos.cl</span></p>
+          <p>La biblioteca de apoyos visuales para servicios públicos:
+            51 servicios · 213 ubicaciones · 699 tareas presenciales.</p>
+          <aside class="notes">
+            Vamos a lo concreto. PICTOS nació en la PUCV con un panel asesor
+            de personas con discapacidad intelectual como co-investigadores.
+            Hoy documenta trámites reales paso a paso, con lenguaje llano y
+            pictogramas. La siguiente lámina muestra cómo se construye cada
+            paso.
+          </aside>
+        </section>
+
+        <!-- 6.2 Esquema animado: capas de la imagen ↔ partes de la frase -->
+        <section id="s6-capas" data-background-color="#ece4d6">
+          <p class="smallcaps">cómo se construye un paso</p>
+          <div class="p5-host" data-sketch="capas" style="height: 66vh;"></div>
+          <aside class="notes">
+            Este es el corazón de pictos.cl: cada paso es una frase en
+            lenguaje llano que ya viene en capas — la acción, el elemento,
+            el contexto. Cada parte de la frase levanta su capa visual, y
+            las tres capas suman la escena completa. Miren cómo rima: cada
+            palabra vive en la imagen. Por eso la biblioteca de
+            pictogramas.pictos.cl es ensamblable: son estas capas
+            combinándose para narrar cualquier transacción.
+          </aside>
+        </section>
+
+        <!-- 6.3 Casos de pictos.net -->
+        <section id="s6-pictos-net" data-background-color="#ece4d6">
+          <p class="huge">Casos de <span>PICTOS.net</span></p>
+          <p>¿Y cuando el pictograma que necesito no existe?
+            De la intención comunicativa al pictograma accesible.</p>
+          <aside class="notes">
+            Y cuando el pictograma no existe, PICTOS.net lo genera desde la
+            intención comunicativa: primero comprende qué se quiere
+            comunicar, después decide cómo visualizarlo. Vamos a las demos
+            en vivo, desde el lanzador.
+          </aside>
+        </section>
+
+        <!-- 6.4 Lanzador de demos: las apps se abren en pestaña nueva
+             (pictos.net no se deja ver bien dentro de un iframe) -->
+        <section id="s6-launcher" data-background-color="#2a0538">
+          <div class="launcher">
+            <div class="brand">
+              <img src="svg/pictos-iso.svg" alt="PICTOS">
+              <h2>demos en vivo</h2>
+            </div>
+            <div class="apps">
+              <a href="https://pictos.cl" target="_blank" rel="noopener">
+                <strong>pictos.cl</strong>
+                <span>apoyos visuales para servicios públicos</span>
+              </a>
+              <a href="https://pictogramas.pictos.cl" target="_blank" rel="noopener">
+                <strong>pictogramas<br>.pictos.cl</strong>
+                <span>la biblioteca ensamblable de pictogramas</span>
+              </a>
+              <a href="https://pictos.net" target="_blank" rel="noopener">
+                <strong>pictos.net</strong>
+                <span>pictogramas generativos desde la intención comunicativa</span>
+              </a>
+            </div>
+            <p class="hint">cada aplicación se abre en una pestaña nueva</p>
+          </div>
+          <aside class="notes">
+            Ruta sugerida: en pictos.cl buscar un trámite conocido por la
+            audiencia y recorrer sus pasos. En pictogramas.pictos.cl
+            mostrar cómo las capas se combinan para armar una transacción
+            nueva. En pictos.net escribir una frase del contexto
+            educacional — por ejemplo: "la apoderada entrega los documentos
+            de matrícula en la secretaría del colegio" — y dejar correr la
+            cascada. Al terminar cada demo, volver a esta pestaña.
+          </aside>
+        </section>
+
+      </section>
+
+
+      <!-- ===== CIERRE (columna independiente) ===== -->
+      <section id="s7-gracias" data-background-color="#000" data-transition="fade">
+        <div class="col-2">
+          <div style="text-align: center;">
+            <img src="svg/mediafranca-dark.svg" alt="MediaFranca" width="30%">
+          </div>
+          <div class="invert" style="font-size: 11px; line-height: 18px; letter-spacing: .1ex;">
+            <h2 style="color: white;">Gracias</h2>
+            <p>
+              <strong>PICTOS</strong>: apoyos visuales y procedimentales para que todas las
+              personas accedan al valor de los servicios públicos.
+            </p>
+            <ol>
+              <li><a href="https://pictos.cl"><strong>pictos.cl</strong></a> — apoyos para servicios públicos</li>
+              <li><a href="https://pictogramas.pictos.cl"><strong>pictogramas.pictos.cl</strong></a> — biblioteca ensamblable</li>
+              <li><a href="https://pictos.net"><strong>pictos.net</strong></a> — pictogramas generativos</li>
+              <li><a href="https://github.com/mediafranca/ICAP"><strong>ICAP</strong></a> — marco de evaluación de pictogramas</li>
+            </ol>
+            <p><strong>Herbert Spencer González</strong> · hspencer@ead.cl</p>
+          </div>
+        </div>
+        <aside class="notes">
+          Las herramientas existen, son chilenas, son abiertas y están a su
+          disposición. Gracias.
+        </aside>
+      </section>
+
+    </div><!-- .slides -->
+  </div><!-- .reveal -->
+</body>
+
+</html>
