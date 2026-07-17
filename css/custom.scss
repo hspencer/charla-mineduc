@@ -1208,3 +1208,130 @@ svg .is-selected {
         }
     }
 }
+
+/* =========================================================
+   s4 · Cuatro decisiones prácticas para volver accesible un
+   trámite (grilla 2x2). Derivadas del marco de madurez en
+   accesibilidad. La tercera tarjeta —canales alternativos—
+   se destaca en terracota porque abre la sección de apoyos
+   visuales que viene a continuación. Se usa en s4-evidencia.
+   ========================================================= */
+.reveal .slides {
+
+    .recos {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1em 1.4em;
+        margin-top: .7em;
+
+        .reco {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 0 .8em;
+            align-items: start;
+            border-radius: 14px;
+            padding: .9em 1em 1em .9em;
+            background: rgba(255, 255, 255, .5);
+            border: 1.5px solid rgba($terciary-color, .2);
+
+            /* Número grande y liviano, como en big-list */
+            .n {
+                font-family: 'Lexend', sans-serif;
+                font-weight: 200;
+                font-size: 2.6rem;
+                line-height: .8;
+                color: $terciary-color;
+                text-align: right;
+            }
+
+            .body {
+                h3 { margin: 0 0 .25em 0; font-size: 1.12rem; line-height: 1.15; }
+                p { margin: 0; font-size: .8rem; line-height: 1.4; }
+            }
+
+            /* Tarjeta destacada: el puente a los apoyos visuales */
+            &.highlight {
+                background: rgba($terciary-color, .1);
+                border-color: rgba($terciary-color, .5);
+                box-shadow: 0 6px 20px rgba($terciary-color, .12);
+            }
+
+            .tag {
+                display: inline-block;
+                margin-top: .6em;
+                font-size: .56rem;
+                text-transform: uppercase;
+                letter-spacing: .12ex;
+                font-weight: 600;
+                color: white;
+                background: $terciary-color;
+                padding: .3em .8em;
+                border-radius: 1em;
+            }
+        }
+    }
+
+    /* En s4-evidencia el pie va en el flujo, bajo las tarjetas, y no
+       posicionado en absoluto: así no se monta sobre las cuatro
+       tarjetas cuando reveal centra el contenido verticalmente. */
+    #s4-evidencia .footnote {
+        position: static;
+        left: auto;
+        right: auto;
+        margin: 1.1em 0 0 0;
+    }
+
+    /* Eyebrow que marca una diapositiva como la profundización de una
+       de las cuatro decisiones del marco (s4-evidencia). El número
+       reusa el color de acento en un disco; el resto va en tinta suave
+       para no competir con el título de la lámina. */
+    .tip-ref {
+        display: inline-flex;
+        align-items: center;
+        gap: .55em;
+        margin: 0 0 .7em 0;
+        font-size: .85rem;
+        font-weight: 350;
+        color: rgba(17, 16, 19, .7);
+
+        .tip-n {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 1.7em;
+            height: 1.7em;
+            border-radius: 50%;
+            background: $terciary-color;
+            color: white;
+            font-weight: 600;
+            font-size: .9em;
+            flex: none;
+        }
+        strong { color: $terciary-color; font-weight: 600; }
+    }
+}
+
+/* =========================================================
+   s6 · Seguidilla de apoyos pictográficos para votar (campaña
+   hecha con pictogramas.pictos.cl). Contact-sheet de 13
+   láminas que narra el trámite completo sin entrar al sitio.
+   Las imágenes viven en public/images/votacion/01..13.png.
+   ========================================================= */
+.reveal .slides {
+
+    .picto-strip {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        gap: .5em;
+        margin-top: .6em;
+        align-items: start;
+
+        img {
+            width: 100%;
+            display: block;
+            border-radius: .6ex;
+            border: 1px solid rgba(17, 16, 19, .15);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, .08);
+        }
+    }
+}
