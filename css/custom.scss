@@ -1319,19 +1319,55 @@ svg .is-selected {
    ========================================================= */
 .reveal .slides {
 
-    .picto-strip {
-        display: grid;
-        grid-template-columns: repeat(7, 1fr);
-        gap: .5em;
-        margin-top: .6em;
-        align-items: start;
+    .picto-seq {
+        position: relative;
+        /* Alto en el sistema de coordenadas del slide (reveal 960×700), no
+           en vh: así la lámina se contiene dentro de la diapo y se escala
+           con ella. Deja un margen generoso; el grupo imagen+puntitos lo
+           centra reveal verticalmente. (Con vh dependía del viewport y en
+           pantallas anchas se salía.) */
+        height: 500px;
 
+        /* Láminas apiladas y centradas; la primera es la base siempre
+           visible y cada fragment se enciende con un clic y tapa a la
+           anterior (opacas, mismo tamaño 4501×5626). Se muestran enteras
+           con contain; sin sombra ni borde, el fondo del slide iguala el
+           de las imágenes (#e9f1fe) y el margen se ve a sangre. */
         img {
-            width: 100%;
-            display: block;
-            border-radius: .6ex;
-            border: 1px solid rgba(17, 16, 19, .15);
-            box-shadow: 0 2px 8px rgba(0, 0, 0, .08);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            max-height: 100%;
+            max-width: 100%;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+        }
+    }
+
+    /* Puntitos de avance dentro de la seguidilla: uno por lámina, el
+       activo en terracota. Lo actualiza main.js con los eventos de
+       fragment de reveal. */
+    .seq-dots {
+        /* En flujo, inmediatamente debajo de la imagen y con un pequeño
+           margen; así el grupo imagen + puntitos queda centrado por reveal
+           en vez de pegado al borde inferior de la diapo. */
+        margin: .7em 0 0;
+        display: flex;
+        justify-content: center;
+        gap: .45em;
+
+        span {
+            width: .5em;
+            height: .5em;
+            border-radius: 50%;
+            background: rgba(17, 16, 19, .22);
+            transition: background .2s ease, transform .2s ease;
+        }
+        span.on {
+            background: $terciary-color;
+            transform: scale(1.3);
         }
     }
 }

@@ -799,9 +799,9 @@ function interaccionFactory(parentEl) {
      */
     function drawCaptions() {
       const msgs = {
-        barreras: 'sin diseño, los intentos de las personas chocan con barreras',
-        canales: 'lo diseñable avanza: varios canales, distintas formas de llegar',
-        flujo: 'con apoyos, el valor fluye en ambos sentidos'
+        barreras: 'Sin diseño, los intentos de las personas chocan con barreras',
+        canales: 'Lo diseñable avanza: varios canales, distintas formas de llegar',
+        flujo: 'Con apoyos, el valor fluye en ambos sentidos'
       };
       p.noStroke();
       p.fill(INK[0], INK[1], INK[2], 210);
@@ -907,19 +907,47 @@ function capasFactory(parentEl) {
       });
       p.textStyle(p.NORMAL);
 
-      // Capas: hilera a la izquierda; escena: a la derecha, con más
-      // separación entre ambas y bajadas para no quedar cortadas por
-      // arriba del canvas.
-      const cardH = H * 0.3;
-      L.cards = ROLES.map((r, i) => {
+      // Hilera:  capa + capa + capa   =   escena
+      // Se posiciona a partir de los anchos REALES de cada imagen para
+      // que las capas queden equidistantes y los signos (+, =) caigan
+      // siempre en los huecos, nunca tapados. La suma (escena) queda a
+      // la derecha, separada por un hueco mayor. Si la fila excede el
+      // canvas, se escala todo junto para que quepa.
+      const cy = H * 0.42;
+      let cardH = H * 0.30;
+      let escH = H * 0.42;
+      let gapPlus = W * 0.055;   // hueco para el signo +
+      let gapEq = W * 0.11;      // hueco mayor para el = y la suma a la derecha
+
+      const cardAR = ROLES.map(r => {
         const im = imgs[r.key];
-        const ar = im && im.width ? im.width / im.height : 0.9;
-        const w = cardH * ar;
-        return { w, h: cardH, cx: W * (0.1 + i * 0.145), cy: H * 0.42 };
+        return im && im.width ? im.width / im.height : 0.86;
       });
-      const eim = imgs.escena;
-      const ear = eim && eim.width ? eim.width / eim.height : 1.4;
-      L.escena = { h: H * 0.44, w: H * 0.44 * ear, cx: W * 0.8, cy: H * 0.42 };
+      const escAR = (imgs.escena && imgs.escena.width)
+        ? imgs.escena.width / imgs.escena.height : 1.4;
+
+      const rowW = () => cardAR.reduce((a, ar) => a + cardH * ar, 0)
+        + gapPlus * (ROLES.length - 1) + gapEq + escH * escAR;
+      const maxW = W * 0.94;
+      if (rowW() > maxW) {
+        const s = maxW / rowW();
+        cardH *= s; escH *= s; gapPlus *= s; gapEq *= s;
+      }
+
+      // Recorrer de izquierda a derecha, centrando la fila completa.
+      x = (W - rowW()) / 2;
+      L.cards = [];
+      L.plusX = [];
+      for (let i = 0; i < ROLES.length; i++) {
+        const w = cardH * cardAR[i];
+        L.cards.push({ w, h: cardH, cx: x + w / 2, cy });
+        x += w;
+        if (i < ROLES.length - 1) { L.plusX.push(x + gapPlus / 2); x += gapPlus; }
+      }
+      L.eqX = x + gapEq / 2;
+      x += gapEq;
+      const ew = escH * escAR;
+      L.escena = { w: ew, h: escH, cx: x + ew / 2, cy };
     }
 
     p.mousePressed = function () {
@@ -1033,22 +1061,22 @@ function capasFactory(parentEl) {
         }
         // (Sin etiqueta bajo la tarjeta: el conector de color y la
         //  etiqueta bajo la palabra ya establecen la correspondencia.)
-        // Signo + entre capas.
+        // Signo + centrado en el hueco entre capa i y capa i+1.
         if (i < ROLES.length - 1 && k > 0.9) {
           p.noStroke();
           p.fill(INK[0], INK[1], INK[2], 140);
           p.textAlign(p.CENTER, p.CENTER);
           p.textSize(Math.max(18, p.width * 0.02));
-          p.text('+', (card.cx + L.cards[i + 1].cx) / 2, card.cy);
+          p.text('+', L.plusX[i], card.cy);
         }
       }
-      // Signo = hacia la escena.
+      // Signo = centrado en el hueco mayor, antes de la escena.
       if (riseK >= 1) {
         p.noStroke();
         p.fill(INK[0], INK[1], INK[2], sceneK > 0 ? 180 : 60);
         p.textAlign(p.CENTER, p.CENTER);
         p.textSize(Math.max(22, p.width * 0.024));
-        p.text('=', p.width * 0.62, L.cards[2].cy);
+        p.text('=', L.eqX, L.cards[2].cy);
       }
     }
 

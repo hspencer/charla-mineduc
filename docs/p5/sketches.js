@@ -129,14 +129,14 @@ function gaussFactory(parentEl) {
 
     // --- Dimensiones de medición que reordenan a la población (acto 3)
     const DIMENSIONS = [
-      'comprensión lectora',
-      'razonamiento matemático',
-      'atención sostenida',
-      'interacción social',
-      'procesamiento visual',
-      'memoria de trabajo',
-      'expresión oral',
-      'regulación emocional'
+      'COMPRENSIÓN LECTORA',
+      'RAZONAMIENTO MATEMÁTICO',
+      'ATENCIÓN SOSTENIDA',
+      'INTERACCIÓN SOCIAL',
+      'PROCESAMIENTO VISUAL',
+      'MEMORIA DE TRABAJO',
+      'EXPRESIÓN ORAL',
+      'REGULACIÓN EMOCIONAL'
     ];
 
     // --- Parámetros de la población y del histograma
@@ -319,8 +319,8 @@ function gaussFactory(parentEl) {
       // Etiqueta de la dimensión medida (una sola a la vez).
       p.textAlign(p.CENTER, p.TOP);
       const label = (phase === 'dims')
-        ? 'dimensión medida: ' + DIMENSIONS[dimIdx]
-        : 'una sola dimensión de medición';
+        ? 'Dimensión medida: ' + DIMENSIONS[dimIdx]
+        : 'Una sola dimensión de medición';
       p.fill(TERRA[0], TERRA[1], TERRA[2]);
       p.textSize(Math.max(13, p.width * 0.014));
       p.text(label, (x0 + x1) / 2, y + 10);
@@ -428,9 +428,9 @@ function gaussFactory(parentEl) {
      */
     function drawCaptions() {
       const msgs = {
-        falling: 'cada punto es una persona',
-        curve: 'la campana describe al conjunto — nadie es el promedio',
-        dims: 'otra dimensión: las mismas personas, otro orden'
+        falling: 'Cada punto es una persona',
+        curve: 'La campana describe al conjunto — nadie es el promedio',
+        dims: 'Otra dimensión: las mismas personas, otro orden'
       };
       p.noStroke();
       p.fill(INK[0], INK[1], INK[2], 210);
@@ -1082,9 +1082,9 @@ function capasFactory(parentEl) {
      */
     function drawCaptions() {
       const msgs = {
-        frase: 'el paso se dice en lenguaje llano — la frase ya viene en capas',
-        capas: 'cada parte de la frase levanta su capa visual',
-        rima: 'rima semántica: cada palabra vive en la imagen'
+        frase: 'El paso se dice en lenguaje llano — la frase ya viene en capas',
+        capas: 'Cada parte de la frase levanta su capa visual',
+        rima: 'Rima semántica: cada palabra vive en la imagen'
       };
       p.noStroke();
       p.fill(INK[0], INK[1], INK[2], 210);

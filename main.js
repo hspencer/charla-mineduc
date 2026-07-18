@@ -36,4 +36,20 @@ deck.initialize().then(() => {
     const currentSlide = deck.getCurrentSlide();
     if (currentSlide) mountP5In(currentSlide);
   });
+
+  // Indicador de avance de la seguidilla de votación (#s6-votacion):
+  // enciende el puntito correspondiente al momento visible. La lámina 1
+  // es la base (sin fragment), así que el índice activo es f + 1.
+  const updateSeqDots = () => {
+    const dots = document.querySelectorAll('#s6-votacion .seq-dots span');
+    if (!dots.length) return;
+    const onSlide = deck.getCurrentSlide() && deck.getCurrentSlide().id === 's6-votacion';
+    const f = deck.getIndices().f;
+    const active = onSlide ? ((f === undefined || f === null ? -1 : f) + 1) : -1;
+    dots.forEach((d, i) => d.classList.toggle('on', i === active));
+  };
+  deck.on('slidechanged', updateSeqDots);
+  deck.on('fragmentshown', updateSeqDots);
+  deck.on('fragmenthidden', updateSeqDots);
+  updateSeqDots();
 });
