@@ -115,17 +115,17 @@ function gaussFactory(parentEl) {
 
     // --- Paleta (custom.scss): púrpura, naranja, terracota + acompañantes
     const PALETTE = [
-      [70, 5, 86],      // púrpura
-      [255, 102, 0],    // naranja
-      [199, 51, 25],    // terracota
-      [65, 47, 166],    // azul violeta (pipeline)
-      [161, 76, 87],    // rosado seco
+      [69, 6, 79],      // púrpura profundo
+      [239, 106, 18],   // naranja
+      [179, 45, 19],    // terracota-bermellón
+      [13, 79, 82],     // petróleo (nota nueva)
+      [194, 133, 26],   // ocre-mostaza (nota nueva)
       [58, 90, 64],     // verde bosque
-      [236, 98, 27],    // naranja quemado
-      [112, 40, 11]     // café
+      [161, 76, 87],    // rosado seco
+      [90, 30, 12]      // café oscuro
     ];
-    const TERRA = [199, 51, 25];
-    const INK = [17, 16, 19];
+    const TERRA = [179, 45, 19];
+    const INK = [28, 20, 31];
 
     // --- Dimensiones de medición que reordenan a la población (acto 3)
     const DIMENSIONS = [
@@ -475,13 +475,13 @@ function interaccionFactory(parentEl) {
   return function (p) {
 
     // --- Paleta del deck (custom.scss), compartida con la campana
-    const PURPLE = [70, 5, 86];       // lo personal
-    const NARANJA = [255, 102, 0];    // lo diseñable
-    const TERRA = [199, 51, 25];      // acento (rótulos clave)
-    const INK = [17, 16, 19];         // texto
+    const PURPLE = [69, 6, 79];       // lo personal
+    const NARANJA = [239, 106, 18];    // lo diseñable
+    const TERRA = [179, 45, 19];      // acento (rótulos clave)
+    const INK = [28, 20, 31];         // texto
     const PALETTE = [
-      [70, 5, 86], [255, 102, 0], [199, 51, 25], [65, 47, 166],
-      [161, 76, 87], [58, 90, 64], [236, 98, 27], [112, 40, 11]
+      [69, 6, 79], [239, 106, 18], [179, 45, 19], [13, 79, 82],
+      [194, 133, 26], [58, 90, 64], [161, 76, 87], [90, 30, 12]
     ];
 
     // --- Canales de comunicación: lo diseñable actúa de formas distintas
@@ -842,12 +842,12 @@ function capasFactory(parentEl) {
 
     // --- Roles semánticos con colores de la paleta del deck
     const ROLES = [
-      { key: 'accion',   label: 'la acción',   words: 'Pasa',              col: [255, 102, 0] },   // naranja
-      { key: 'elemento', label: 'el elemento', words: 'tu tarjeta',        col: [65, 47, 166] },   // azul violeta
+      { key: 'accion',   label: 'la acción',   words: 'Pasa',              col: [239, 106, 18] },  // naranja
+      { key: 'elemento', label: 'el elemento', words: 'tu tarjeta',        col: [13, 79, 82] },    // petróleo
       { key: 'contexto', label: 'el contexto', words: 'por el torniquete', col: [58, 90, 64] }     // verde bosque
     ];
-    const INK = [17, 16, 19];
-    const TERRA = [199, 51, 25];
+    const INK = [28, 20, 31];
+    const TERRA = [179, 45, 19];
 
     const ACT1_MS = 4200;     // frase y coloreado
     const ACT2_MS = 4600;     // levantar capas

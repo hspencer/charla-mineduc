@@ -115,17 +115,17 @@ function gaussFactory(parentEl) {
 
     // --- Paleta (custom.scss): púrpura, naranja, terracota + acompañantes
     const PALETTE = [
-      [70, 5, 86],      // púrpura
-      [255, 102, 0],    // naranja
-      [199, 51, 25],    // terracota
-      [65, 47, 166],    // azul violeta (pipeline)
-      [161, 76, 87],    // rosado seco
+      [69, 6, 79],      // púrpura profundo
+      [239, 106, 18],   // naranja
+      [179, 45, 19],    // terracota-bermellón
+      [13, 79, 82],     // petróleo (nota nueva)
+      [194, 133, 26],   // ocre-mostaza (nota nueva)
       [58, 90, 64],     // verde bosque
-      [236, 98, 27],    // naranja quemado
-      [112, 40, 11]     // café
+      [161, 76, 87],    // rosado seco
+      [90, 30, 12]      // café oscuro
     ];
-    const TERRA = [199, 51, 25];
-    const INK = [17, 16, 19];
+    const TERRA = [179, 45, 19];
+    const INK = [28, 20, 31];
 
     // --- Dimensiones de medición que reordenan a la población (acto 3)
     const DIMENSIONS = [
@@ -475,13 +475,13 @@ function interaccionFactory(parentEl) {
   return function (p) {
 
     // --- Paleta del deck (custom.scss), compartida con la campana
-    const PURPLE = [70, 5, 86];       // lo personal
-    const NARANJA = [255, 102, 0];    // lo diseñable
-    const TERRA = [199, 51, 25];      // acento (rótulos clave)
-    const INK = [17, 16, 19];         // texto
+    const PURPLE = [69, 6, 79];       // lo personal
+    const NARANJA = [239, 106, 18];    // lo diseñable
+    const TERRA = [179, 45, 19];      // acento (rótulos clave)
+    const INK = [28, 20, 31];         // texto
     const PALETTE = [
-      [70, 5, 86], [255, 102, 0], [199, 51, 25], [65, 47, 166],
-      [161, 76, 87], [58, 90, 64], [236, 98, 27], [112, 40, 11]
+      [69, 6, 79], [239, 106, 18], [179, 45, 19], [13, 79, 82],
+      [194, 133, 26], [58, 90, 64], [161, 76, 87], [90, 30, 12]
     ];
 
     // --- Canales de comunicación: lo diseñable actúa de formas distintas
@@ -799,9 +799,9 @@ function interaccionFactory(parentEl) {
      */
     function drawCaptions() {
       const msgs = {
-        barreras: 'sin diseño, los intentos de las personas chocan con barreras',
-        canales: 'lo diseñable avanza: varios canales, distintas formas de llegar',
-        flujo: 'con apoyos, el valor fluye en ambos sentidos'
+        barreras: 'Sin diseño, los intentos de las personas chocan con barreras',
+        canales: 'Lo diseñable avanza: varios canales, distintas formas de llegar',
+        flujo: 'Con apoyos, el valor fluye en ambos sentidos'
       };
       p.noStroke();
       p.fill(INK[0], INK[1], INK[2], 210);
@@ -842,12 +842,12 @@ function capasFactory(parentEl) {
 
     // --- Roles semánticos con colores de la paleta del deck
     const ROLES = [
-      { key: 'accion',   label: 'la acción',   words: 'Pasa',              col: [255, 102, 0] },   // naranja
-      { key: 'elemento', label: 'el elemento', words: 'tu tarjeta',        col: [65, 47, 166] },   // azul violeta
+      { key: 'accion',   label: 'la acción',   words: 'Pasa',              col: [239, 106, 18] },  // naranja
+      { key: 'elemento', label: 'el elemento', words: 'tu tarjeta',        col: [13, 79, 82] },    // petróleo
       { key: 'contexto', label: 'el contexto', words: 'por el torniquete', col: [58, 90, 64] }     // verde bosque
     ];
-    const INK = [17, 16, 19];
-    const TERRA = [199, 51, 25];
+    const INK = [28, 20, 31];
+    const TERRA = [179, 45, 19];
 
     const ACT1_MS = 4200;     // frase y coloreado
     const ACT2_MS = 4600;     // levantar capas
@@ -907,19 +907,47 @@ function capasFactory(parentEl) {
       });
       p.textStyle(p.NORMAL);
 
-      // Capas: hilera a la izquierda; escena: a la derecha, con más
-      // separación entre ambas y bajadas para no quedar cortadas por
-      // arriba del canvas.
-      const cardH = H * 0.3;
-      L.cards = ROLES.map((r, i) => {
+      // Hilera:  capa + capa + capa   =   escena
+      // Se posiciona a partir de los anchos REALES de cada imagen para
+      // que las capas queden equidistantes y los signos (+, =) caigan
+      // siempre en los huecos, nunca tapados. La suma (escena) queda a
+      // la derecha, separada por un hueco mayor. Si la fila excede el
+      // canvas, se escala todo junto para que quepa.
+      const cy = H * 0.42;
+      let cardH = H * 0.30;
+      let escH = H * 0.42;
+      let gapPlus = W * 0.055;   // hueco para el signo +
+      let gapEq = W * 0.11;      // hueco mayor para el = y la suma a la derecha
+
+      const cardAR = ROLES.map(r => {
         const im = imgs[r.key];
-        const ar = im && im.width ? im.width / im.height : 0.9;
-        const w = cardH * ar;
-        return { w, h: cardH, cx: W * (0.1 + i * 0.145), cy: H * 0.42 };
+        return im && im.width ? im.width / im.height : 0.86;
       });
-      const eim = imgs.escena;
-      const ear = eim && eim.width ? eim.width / eim.height : 1.4;
-      L.escena = { h: H * 0.44, w: H * 0.44 * ear, cx: W * 0.8, cy: H * 0.42 };
+      const escAR = (imgs.escena && imgs.escena.width)
+        ? imgs.escena.width / imgs.escena.height : 1.4;
+
+      const rowW = () => cardAR.reduce((a, ar) => a + cardH * ar, 0)
+        + gapPlus * (ROLES.length - 1) + gapEq + escH * escAR;
+      const maxW = W * 0.94;
+      if (rowW() > maxW) {
+        const s = maxW / rowW();
+        cardH *= s; escH *= s; gapPlus *= s; gapEq *= s;
+      }
+
+      // Recorrer de izquierda a derecha, centrando la fila completa.
+      x = (W - rowW()) / 2;
+      L.cards = [];
+      L.plusX = [];
+      for (let i = 0; i < ROLES.length; i++) {
+        const w = cardH * cardAR[i];
+        L.cards.push({ w, h: cardH, cx: x + w / 2, cy });
+        x += w;
+        if (i < ROLES.length - 1) { L.plusX.push(x + gapPlus / 2); x += gapPlus; }
+      }
+      L.eqX = x + gapEq / 2;
+      x += gapEq;
+      const ew = escH * escAR;
+      L.escena = { w: ew, h: escH, cx: x + ew / 2, cy };
     }
 
     p.mousePressed = function () {
@@ -1033,22 +1061,22 @@ function capasFactory(parentEl) {
         }
         // (Sin etiqueta bajo la tarjeta: el conector de color y la
         //  etiqueta bajo la palabra ya establecen la correspondencia.)
-        // Signo + entre capas.
+        // Signo + centrado en el hueco entre capa i y capa i+1.
         if (i < ROLES.length - 1 && k > 0.9) {
           p.noStroke();
           p.fill(INK[0], INK[1], INK[2], 140);
           p.textAlign(p.CENTER, p.CENTER);
           p.textSize(Math.max(18, p.width * 0.02));
-          p.text('+', (card.cx + L.cards[i + 1].cx) / 2, card.cy);
+          p.text('+', L.plusX[i], card.cy);
         }
       }
-      // Signo = hacia la escena.
+      // Signo = centrado en el hueco mayor, antes de la escena.
       if (riseK >= 1) {
         p.noStroke();
         p.fill(INK[0], INK[1], INK[2], sceneK > 0 ? 180 : 60);
         p.textAlign(p.CENTER, p.CENTER);
         p.textSize(Math.max(22, p.width * 0.024));
-        p.text('=', p.width * 0.62, L.cards[2].cy);
+        p.text('=', L.eqX, L.cards[2].cy);
       }
     }
 

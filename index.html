@@ -25,38 +25,34 @@
       <!-- =========================================================
            ESTRUCTURA: columnas horizontales = secciones narrativas;
            dentro de cada columna, diapositivas verticales.
-           → cambia de sección · ↓ recorre la sección actual.
-           Portada y cierre son columnas independientes.
            ========================================================= -->
 
-
-      <!-- ===== PORTADA (heredada de /cc) ===== -->
-      <section data-background-color="#FFF" data-transition="concave" id="title-slide">
-        <object type="image/svg+xml" data="svg/title-illustration.svg" class="illustration"
-          alt="Ilustración: globo de pensamiento con pictogramas"></object>
-
-        <div class="col-special">
-          <div class="title">
+      <!-- ===== PORTADA ===== -->
+      <section data-background-color="#f4f1e8" data-transition="concave" id="title-slide">
+        <div class="portada">
+          <object type="image/svg+xml" data="svg/title-illustration.svg" class="illustration"
+            alt="Ilustración: burbuja de pensamiento con pictogramas"></object>
+          <div class="title-main">
             <h1><span>Accesibilidad Cognitiva</span>para los Servicios Públicos</h1>
-          </div>
-
-          <div class="credentials">
-            <div class="author">
-              <dt>Presenta</dt>
-              <dl><strong>Herbert Spencer González</strong><br>
-                <span>Núcleo de Accesibilidad e Inclusión PUCV</span>
-              </dl>
-            </div>
-            <div class="context">
-              <dt>Secretaría Regional<br>Ministerial de Educación</dt>
-              <dl>Jornadas accesibilidad universal en el marco de la implementación de la Ley de autismo</dl>
-              <dl>Viña del Mar · julio 2026</dl>
+            <div class="credentials">
+              <div class="author">
+                <dt>Presenta</dt>
+                <dl><strong>Herbert Spencer González</strong><br>
+                  <span>Núcleo de Accesibilidad e Inclusión · PUCV</span>
+                </dl>
+              </div>
+              <div class="context">
+                <dt>SEREMI de Educación</dt>
+                <dl>Jornada de accesibilidad universal · Ley de Autismo<br>
+                  <span>Viña del Mar · julio 2026</span>
+                </dl>
+              </div>
             </div>
           </div>
         </div>
 
         <div class="footer">
-          <span>Esta presentación vive en <a href="https://herbertspencer.net/charla-mineduc">herbertspencer.net/charla-mineduc</a></span>
+          <span>herbertspencer.net/charla-mineduc</span>
           <div class="logos">
             <img src="images/pucv-logo.png" alt="PUCV">
             <img src="svg/logo-pictos-cl.svg" alt="pictos.cl">
@@ -76,34 +72,33 @@
 
       <!-- =========================================================
            SECCIÓN 1 — LEY 21.545: LOS APOYOS RAZONABLES
-           1.1 pregunta · 1.2 campana de Gauss animada
            ========================================================= -->
       <section>
 
         <!-- 1.1 La pregunta -->
-        <section id="s1-ley" data-background-color="#F3FAC2">
-          <p class="smallcaps">Ley 21.545 (2023)</p>
+        <section id="s1-ley" data-background-color="#dde7cd">
+          <p class="smallcaps">Ley 21.545 · 2023</p>
           <p class="huge">
-            Los <span class="green">apoyos razonables</span>:
-            ¿qué son y por qué son necesarios?
+            La ley garantiza <span class="green">apoyos razonables</span>.
+            ¿Qué son, y por qué son necesarios?
           </p>
+          <p>El Estado debe ajustar su trato con las personas del espectro autista — en lo social, en salud y en educación.</p>
           <aside class="notes">
             La Ley 21.545 establece que las personas del espectro autista
             tienen derecho a apoyos y ajustes razonables en su trato con el
-            Estado — en lo social, en salud y en educación. Pero antes de
-            hablar de apoyos, quiero cuestionar una imagen mental que todos
-            cargamos: la de la "persona promedio" para la cual diseñamos
-            los servicios.
+            Estado. Pero antes de hablar de apoyos, quiero cuestionar una
+            imagen mental que todos cargamos: la de la "persona promedio"
+            para la cual diseñamos los servicios.
           </aside>
         </section>
 
         <!-- 1.2 Campana de Gauss animada -->
-        <section id="s1-gauss" data-background-color="#F0E9D4">
-          <div class="p5-host" data-sketch="gauss" style="height: 65vh;"></div>
+        <section id="s1-gauss" data-background-color="#f0e9d4">
+          <p class="smallcaps">nadie es el promedio</p>
+          <div class="p5-host stretch-visual" data-sketch="gauss" style="height: 62vh;"></div>
           <p class="caption fragment">
-            La campana es solo el promedio de toda la población: los individuos que
-            lo componen son muy variados. Y la escala es unidimensional — para la
-            educación, esa visión es altamente limitante.
+            La campana describe al <strong>conjunto</strong>, no a las personas: cada individuo es distinto,
+            y la escala mide una sola dimensión. Cambia la dimensión y las mismas personas se reordenan por completo.
           </p>
           <aside class="notes">
             Cada punto que cae es una persona: formas y colores distintos,
@@ -112,10 +107,9 @@
             promedio. Y ojo con el eje: mide una sola dimensión a la vez.
             Cuando cambio la dimensión — comprensión lectora, atención,
             interacción social — las mismas personas se reordenan por
-            completo. Miren a la persona destacada: extrema en una
-            dimensión, promedio en otra. Por eso los apoyos razonables no
-            son para "los que están lejos del promedio": son el
-            reconocimiento de que el promedio no existe.
+            completo. Por eso los apoyos razonables no son para "los que
+            están lejos del promedio": son el reconocimiento de que el
+            promedio no existe.
           </aside>
         </section>
 
@@ -127,49 +121,59 @@
            ========================================================= -->
       <section>
 
-        <!-- 2.1 Definición -->
-        <section id="s2-transacciones" data-background-color="#f1ebdb">
-          <p class="smallcaps">Una definición simple</p>
-          <p class="huge">
-            Los servicios se hacen reales en <span>cada trámite</span>
-          </p>
-          <p>Cada trámite entrega algo importante a la persona.</p>
+        <!-- 2.1 Definición · dos aforismos encadenados + ecuación -->
+        <section id="s2-transacciones" data-background-color="#f1e6cd">
+          <p class="smallcaps">una definición simple</p>
+          <div class="axiom-stack">
+            <p class="axiom"><span class="qm">1</span><span>Los <em>servicios</em> son la suma de sus <em>transacciones</em>.</span></p>
+            <p class="axiom"><span class="qm">2</span><span>Las <em>transacciones</em> son la forma de entregar <span class="u">el valor a las personas</span>.</span></p>
+          </div>
+          <div class="equation">
+            <span class="term service"><b>Un servicio</b><span>lo que ofrece el Estado</span></span>
+            <span class="op">=</span>
+            <span class="term tx"><b>transacción</b><span>trámite o atención</span></span>
+            <span class="op">+</span>
+            <span class="term tx"><b>transacción</b><span>trámite o atención</span></span>
+            <span class="op">+</span>
+            <span class="op" style="font-size:1.2rem;color:var(--ink-faint)">…</span>
+          </div>
           <aside class="notes">
-            Para hablar simple: un servicio se vuelve real en cada trámite o
-            atención. Si después queremos usar la palabra "transacción", que
-            sea solo como nombre técnico para ese momento en que el servicio
-            entrega algo importante a la persona. Suena obvio, pero pocas
-            instituciones tienen la lista completa de lo que entregan.
+            Para hablar simple: los servicios son la suma de sus transacciones,
+            y cada transacción es la forma en que el servicio entrega algo
+            importante a una persona — un trámite, una atención. Suena obvio,
+            pero pocas instituciones tienen la lista completa de lo que entregan.
           </aside>
         </section>
 
-        <!-- 2.2 Ejemplos de valor -->
-        <section id="s2-valor" data-background-color="#f1ebdb">
-          <p class="smallcaps">¿qué valor entrega un servicio?</p>
-          <div class="col-2" style="gap: 1.5em;">
-            <div>
+        <!-- 2.2 Qué valor entrega -->
+        <section id="s2-valor" data-background-color="#f1e6cd">
+          <p class="smallcaps">¿qué valor entrega cada transacción?</p>
+          <div class="value-cols">
+            <div class="value-card">
+              <p class="k">la mayoría de las veces</p>
               <h3>Un producto</h3>
               <ul>
-                <li>un documento (credencial, certificado, matrícula)</li>
-                <li>un beneficio (beca, subsidio)</li>
+                <li>un documento: credencial, certificado, matrícula</li>
+                <li>un beneficio: beca, subsidio</li>
               </ul>
             </div>
-            <div>
+            <div class="value-card experience">
+              <p class="k">a veces</p>
               <h3>Una experiencia</h3>
               <ul>
-                <li>un viaje (en metro)</li>
-                <li>una consulta (médica)</li>
+                <li>un viaje en metro</li>
+                <li>una consulta médica</li>
                 <li>una clase</li>
               </ul>
             </div>
           </div>
-          <!-- TODO: reemplazar listas por pictogramas de pictogramas.pictos.cl -->
+          <p class="small" style="margin-top:1.2em">Mientras más variados los ejemplos, más claro queda que <strong>todo servicio se puede describir así</strong>.</p>
           <aside class="notes">
             El valor puede ser un producto — la mayoría de las veces: un
-            certificado, una matrícula, un beneficio. O puede ser una
-            experiencia: un viaje en metro, una consulta, una clase.
-            Mientras más variados los ejemplos, mejor se entiende que todo
-            servicio se puede describir así.
+            certificado, una matrícula, un beneficio. O una experiencia: un
+            viaje en metro, una consulta, una clase. Mientras más variados
+            los ejemplos, mejor se entiende que todo servicio se puede
+            describir así.
           </aside>
         </section>
 
@@ -182,12 +186,13 @@
       <section>
 
         <!-- 3.1 El problema -->
-        <section id="s3-problema" data-background-color="#e6dee9">
-          <p class="smallcaps">¿el problema?</p>
+        <section id="s3-problema" data-background-color="#e3d5ee">
+          <p class="smallcaps">el problema</p>
           <p class="huge">
-            Si los servicios son inaccesibles, hay personas que
-            <span>no acceden al valor</span>
+            Si una transacción es inaccesible, hay personas que
+            <span>no reciben el valor</span> al que tienen derecho.
           </p>
+          <p>El derecho existe en el papel, pero no en la experiencia. Y eso no es un problema de las personas: es un problema de diseño.</p>
           <aside class="notes">
             Si el servicio no se entiende, el valor no llega: el derecho
             existe en el papel pero no en la experiencia. Y esto no es un
@@ -195,22 +200,20 @@
           </aside>
         </section>
 
-        <!-- 3.2 Esquema animado: accesibilidad como interacción -->
-        <section id="s3-interaccion" data-background-color="#e6dee9">
+        <!-- 3.2 Esquema animado -->
+        <section id="s3-interaccion" data-background-color="#e3d5ee">
           <p class="smallcaps">la accesibilidad es un problema de diseño</p>
-          <div class="p5-host" data-sketch="interaccion" style="height: 62vh;"></div>
+          <div class="p5-host stretch-visual" data-sketch="interaccion" style="height: 60vh;"></div>
           <p class="caption fragment">
-            Accesibilidad: la interacción entre las capacidades individuales y el
-            medioambiente construido. Esa mitad la podemos diseñar — por varios canales,
-            de distintas formas, para personas diversas.
+            Accesibilidad = la interacción entre las <strong>capacidades de la persona</strong> y el
+            <strong>entorno construido</strong>. Esa segunda mitad la diseñamos nosotros — por varios canales, para personas diversas.
           </p>
           <aside class="notes">
             La accesibilidad no es un atributo de la persona: es la
             interacción entre las capacidades individuales y las barreras o
             facilitadores del entorno construido. La primera mitad no la
-            controlamos. La segunda mitad — los formularios, la señalética,
-            el lenguaje, los pasos del trámite — esa la diseñamos nosotros.
-            Por lo tanto, podemos construir para la accesibilidad.
+            controlamos. La segunda — los formularios, la señalética, el
+            lenguaje, los pasos del trámite — esa la diseñamos nosotros.
           </aside>
         </section>
 
@@ -222,161 +225,118 @@
            ========================================================= -->
       <section>
 
-        <!-- 4.1 MARCO: las cuatro decisiones (enmarca la sección) -->
-        <section id="s4-evidencia" data-background-color="#ece2d0">
-          <p class="smallcaps black bold">cuatro decisiones prácticas</p>
-          <h3>Cuatro decisiones para que un <span>trámite se entienda</span></h3>
+        <!-- 4.1 MARCO: las cuatro decisiones -->
+        <section id="s4-evidencia" data-background-color="#ecdcc2">
+          <p class="smallcaps black">cuatro decisiones prácticas</p>
+          <h2>Para que un <span>trámite se entienda</span></h2>
           <div class="recos">
-
             <div class="reco">
               <span class="n">1</span>
               <div class="body">
                 <h3>Pónganse de acuerdo en el proceso</h3>
-                <p>Que todo el equipo describa el trámite de la misma manera,
-                  sin versiones distintas según la oficina o quien atiende.</p>
+                <p>Que todo el equipo describa el trámite igual, sin versiones según la oficina o quién atiende.</p>
               </div>
             </div>
-
             <div class="reco">
               <span class="n">2</span>
               <div class="body">
                 <h3>Nómbrenlo como lo vive la persona</h3>
-                <p>Nombren cada paso por lo que la persona hace y recibe, en su
-                  lenguaje y no en la jerga interna del servicio.</p>
+                <p>Cada paso, por lo que la persona hace y recibe — en su lenguaje, no en la jerga interna.</p>
               </div>
             </div>
-
             <div class="reco">
               <span class="n">3</span>
               <div class="body">
                 <h3>Hagan que el servicio aprenda</h3>
-                <p>Abran un canal de retroalimentación: cada dificultad que la
-                  persona reporta puede corregir el sistema.</p>
+                <p>Un canal de vuelta: cada dificultad reportada corrige el proceso.</p>
               </div>
             </div>
-
             <div class="reco highlight">
               <span class="n">4</span>
               <div class="body">
                 <h3>Expliquen lo mismo de varias maneras</h3>
-                <p>La misma información en texto llano, ícono y pictograma.
-                  Aquí entran los apoyos visuales.</p>
+                <p>La misma información en texto llano, ícono y pictograma.</p>
                 <span class="tag">aquí empieza la parte visual</span>
               </div>
             </div>
-
           </div>
           <p class="footnote">
-            Recomendaciones derivadas del marco de madurez en accesibilidad, desde la
-            visibilidad de propósitos hasta los sistemas responsivos, en Spencer et al.,
-            <em>Cognitive accessibility for public services: A proposal for accessibility maturity</em>.
+            Derivadas del marco de madurez en accesibilidad (de la visibilidad de propósitos a los sistemas responsivos), en
+            Spencer et&nbsp;al., <em>Cognitive accessibility for public services: a proposal for accessibility maturity</em>.
           </p>
           <aside class="notes">
             Estas cuatro decisiones enmarcan todo lo que sigue, y ninguna
-            necesita presupuesto ni software nuevo. En las próximas láminas tomo
-            cada una por separado. Primero: pónganse de acuerdo y dejen registrada
-            la lógica del trámite, para que el servicio hable con una sola voz.
-            Segundo: descríbanlo desde la persona, no desde la oficina. Tercero:
-            hagan que el servicio aprenda — un canal donde alguien escuche y
-            ajuste; es la más difícil, porque pide un cambio en cómo se organiza
-            el equipo. Y cuarto, la que abre todo lo que viene: expliquen lo mismo
-            de varias maneras, texto llano, ícono y pictograma. De aquí en
-            adelante, la charla trata de esa cuarta: los apoyos visuales y, al
-            final, los casos prácticos.
+            necesita presupuesto ni software nuevo. En las próximas láminas
+            tomo cada una por separado. La cuarta es la que abre todo lo que
+            viene: los apoyos visuales.
           </aside>
         </section>
 
-        <!-- 4.2 Profundización · decisión 1: pónganse de acuerdo en el proceso -->
-        <section id="s4-lenguaje-llano" data-background-color="#ece2d0">
-          <p class="tip-ref"><span class="tip-n">1</span> una decisión en detalle — <strong>pónganse de acuerdo en el proceso</strong></p>
-          <h2>Una descripción <span>paso-a-paso</span> en lenguaje llano</h2>
+        <!-- 4.2 Decisión 1 -->
+        <section id="s4-lenguaje-llano" data-background-color="#ecdcc2">
+          <p class="tip-ref"><span class="tip-n">1</span> en detalle — <strong>pónganse de acuerdo en el proceso</strong></p>
+          <h2>Una descripción <span>paso a paso</span> en lenguaje llano</h2>
           <ul>
             <li>En el lenguaje de la persona, <strong>no en la jerga interna</strong> del servicio</li>
-            <li>Apoyos visuales y explicaciones paso a paso</li>
-            <li>Idealmente nueve pasos o menos</li>
+            <li>Cada paso con su apoyo visual y su explicación</li>
+            <li>Idealmente, <strong>nueve pasos o menos</strong></li>
           </ul>
+          <p class="small" style="margin-top:1em">El primer apoyo no es un dibujo: es esa descripción compartida. Si un paso no se puede decir simple, el problema no es la redacción — es el trámite.</p>
           <aside class="notes">
-            La primera decisión, en detalle. Ponerse de acuerdo en el proceso no
-            es escribir un manual interno: es dejar el trámite descrito paso a
-            paso, en lenguaje llano, como un registro compartido que todo el
-            equipo lee igual. El primer apoyo no es un dibujo: es esa descripción.
-            Si el paso no se puede decir simple, el problema no es la redacción:
-            es el trámite.
+            Ponerse de acuerdo en el proceso no es escribir un manual interno:
+            es dejar el trámite descrito paso a paso, en lenguaje llano, como
+            un registro compartido que todo el equipo lee igual.
           </aside>
         </section>
 
-        <!-- 4.3 Profundización · decisión 2: nómbrenlo como lo vive la persona -->
-        <section id="s4-actos" data-background-color="#ece2d0">
-          <p class="tip-ref"><span class="tip-n">2</span> una decisión en detalle — <strong>nómbrenlo como lo vive la persona</strong></p>
-          <p class="smallcaps">la transacción, en el lenguaje del Estado</p>
-          <p>
-            La <a href="https://nuevo.leychile.cl/navegar?idNorma=1138479">Ley 21.180</a>
-            nombra esta cadena con términos del Estado. Lo que para una persona
-            es un trámite, para el servicio se ordena como una
-            <strong>Prestación Institucional</strong> dentro de un
-            <strong>Procedimiento Administrativo</strong>.
-          </p>
+        <!-- 4.3 Decisión 2 · flujo -->
+        <section id="s4-actos" data-background-color="#ecdcc2">
+          <p class="tip-ref"><span class="tip-n">2</span> en detalle — <strong>nómbrenlo como lo vive la persona</strong></p>
+          <p>La <a href="https://nuevo.leychile.cl/navegar?idNorma=1138479">Ley 21.180</a> nombra esta cadena con términos del Estado. Nuestro trabajo es traducirla a lo que la persona <strong>hace, espera y recibe</strong>.</p>
           <div class="flow">
             <div class="step user">
-              <span class="who">lo que hace el usuario</span>
+              <span class="who">lo que hace la persona</span>
               <span class="what">Presenta su solicitud</span>
-              <span class="how">en términos del Estado: "Presentación"; inicia el
-                trámite y entrega antecedentes</span>
+              <span class="how">Estado: «Presentación». Inicia el trámite y entrega antecedentes.</span>
             </div>
             <div class="arrow">→</div>
             <div class="step state">
               <span class="who">lo que hace el Estado</span>
               <span class="what">Revisa y tramita</span>
-              <span class="how">en términos del Estado: "Tramitación"; revisa
-                requisitos e interopera con otras bases</span>
+              <span class="how">Estado: «Tramitación». Revisa requisitos e interopera con otras bases.</span>
             </div>
             <div class="arrow">→</div>
             <div class="step act">
               <span class="who">lo que recibe la persona</span>
               <span class="what">Una respuesta formal</span>
-              <span class="how">en términos del Estado: "Acto Administrativo";
-                resolución, decreto u otorgamiento del beneficio</span>
+              <span class="how">Estado: «Acto Administrativo». Resolución, decreto u otorgamiento del beneficio.</span>
             </div>
           </div>
-          <p class="small">
-            Para la persona, lo importante es entender <strong>qué debe hacer,
-            qué hará el servicio y qué recibirá al final</strong>.
-          </p>
+          <p class="small">Para la persona, lo importante es entender <strong>qué debe hacer, qué hará el servicio y qué recibirá al final</strong>.</p>
           <aside class="notes">
-            Una precisión importante para esta audiencia: la jerga del Estado
-            existe y hay que conocerla, pero no basta con repetirla. La Ley
-            21.180 habla de prestación institucional, procedimiento
-            administrativo y acto administrativo. Nuestro trabajo es traducir
-            esa cadena a una secuencia que la persona pueda seguir: qué
-            presenta, qué revisa el servicio y qué recibirá al final. Los
-            apoyos no reemplazan el marco jurídico; lo vuelven visible y
-            comprensible para quien usa el servicio.
+            La jerga del Estado existe y hay que conocerla, pero no basta con
+            repetirla. La Ley 21.180 habla de prestación institucional,
+            procedimiento administrativo y acto administrativo. Nuestro
+            trabajo es traducir esa cadena a una secuencia que la persona
+            pueda seguir.
           </aside>
         </section>
 
-        <!-- 4.4 Profundización · decisión 3: hagan que el servicio aprenda -->
-        <section id="s4-aprende" data-background-color="#ece2d0">
-          <p class="tip-ref"><span class="tip-n">3</span> una decisión en detalle — <strong>hagan que el servicio aprenda</strong></p>
+        <!-- 4.4 Decisión 3 -->
+        <section id="s4-aprende" data-background-color="#ecdcc2">
+          <p class="tip-ref"><span class="tip-n">3</span> en detalle — <strong>hagan que el servicio aprenda</strong></p>
           <h2>Que los canales sean <span>reversibles</span></h2>
-          <p>
-            Recibir opiniones se dice fácil, pero un buzón que nadie lee no
-            sirve. El reporte de una persona solo mejora el servicio si
-            <strong>alguien lo lee, responde y ajusta el proceso</strong>.
-          </p>
+          <p>Un buzón que nadie lee no sirve. El reporte de una persona solo mejora el servicio si <strong>alguien lo lee, responde y ajusta el proceso</strong>.</p>
           <ul>
-            <li>Pide un <strong>cambio organizacional</strong>: cerrar el circuito, no solo abrir un buzón.</li>
-            <li>Supone un <strong>cargo</strong> que quizá todavía no existe: alguien que escuche y corrija.</li>
-            <li>Y un <strong>recurso</strong> que todavía no se prioriza: tiempo dedicado a que el servicio aprenda.</li>
+            <li>Pide un <strong>cambio organizacional</strong>: cerrar el circuito, no solo abrir un buzón</li>
+            <li>Supone un <strong>cargo</strong> que quizá todavía no existe: alguien que escuche y corrija</li>
+            <li>Y un <strong>recurso</strong> que no se prioriza: tiempo dedicado a que el servicio aprenda</li>
           </ul>
           <aside class="notes">
             La tercera decisión, y la más incómoda de aterrizar. Que el canal
             sea reversible significa que la información va y vuelve: alguien
-            escucha, responde y cambia el proceso. Eso casi nunca es
-            responsabilidad de nadie en particular. Lo digo con honestidad:
-            requiere un cambio organizacional, un cargo que quizá todavía no
-            existe, y un recurso — tiempo — que todavía no se prioriza. Es el
-            paso que convierte un servicio que informa en un servicio que
-            aprende.
+            escucha, responde y cambia el proceso. Es el paso que convierte un
+            servicio que informa en un servicio que aprende.
           </aside>
         </section>
 
@@ -388,114 +348,76 @@
            ========================================================= -->
       <section>
 
-        <!-- 5.1 Por qué los apoyos visuales — cuatro argumentos -->
-        <section id="s5-por-que" data-background-color="#dbe4ea">
-          <p class="smallcaps bold black">¿por qué los apoyos visuales son importantes?</p>
-          <div class="arg-grid">
-            <div class="arg">
-              <img src="images/s5/procesamiento-visual.png" alt="">
-              <div>
-                <h3>1 · Lo visual suele entenderse mejor</h3>
-                <p>Para muchas personas autistas, una explicación visual puede ser
-                  más clara que una explicación solo hablada.</p>
+        <!-- 5.1 Por qué — REDISEÑO: 4 argumentos, jerarquía clara -->
+        <section id="s5-por-que" data-background-color="#d0e2e1">
+          <p class="smallcaps black">¿por qué funcionan los apoyos visuales?</p>
+          <div class="why-grid">
+            <div class="why-card">
+              <div class="fig"><span class="num">1</span><img src="images/s5/procesamiento-visual.png" alt=""></div>
+              <div class="txt">
+                <h3>Lo visual se entiende mejor</h3>
+                <p>Para muchas personas autistas, una explicación <strong>visual</strong> es más clara que una solo hablada.</p>
               </div>
             </div>
-            <div class="arg">
-              <img src="images/s5/permanencia.png" alt="">
-              <div>
-                <h3>2 · El apoyo queda a la vista</h3>
-                <p>A diferencia del habla, el pictograma <strong>permanece</strong>.
-                  La persona puede volver a mirarlo y seguir el paso a su ritmo.</p>
+            <div class="why-card">
+              <div class="fig"><span class="num">2</span><img src="images/s5/permanencia.png" alt=""></div>
+              <div class="txt">
+                <h3>El apoyo queda a la vista</h3>
+                <p>A diferencia del habla, el pictograma <strong>permanece</strong>: se puede volver a mirar y seguir a su ritmo.</p>
               </div>
             </div>
-            <div class="arg">
-              <img src="images/s5/rima.png" alt="">
-              <div>
-                <h3>3 · Texto e imagen se refuerzan</h3>
-                <p>Cuando texto, ícono y pictograma dicen lo mismo, entender el
-                  paso requiere menos esfuerzo.</p>
+            <div class="why-card">
+              <div class="fig"><span class="num">3</span><img src="images/s5/rima.png" alt=""></div>
+              <div class="txt">
+                <h3>Texto e imagen se refuerzan</h3>
+                <p>Cuando texto, ícono y pictograma <strong>dicen lo mismo</strong>, entender el paso cuesta menos.</p>
               </div>
             </div>
-            <div class="arg">
-              <img src="images/s5/abstraccion.png" alt="">
-              <div>
-                <h3>4 · Un buen pictograma muestra lo esencial</h3>
-                <p>Un buen pictograma deja fuera lo secundario y muestra lo justo
-                  para entender la acción o el objeto.</p>
+            <div class="why-card">
+              <div class="fig"><span class="num">4</span><img src="images/s5/abstraccion.png" alt=""></div>
+              <div class="txt">
+                <h3>Muestra solo lo esencial</h3>
+                <p>Un buen pictograma deja fuera lo secundario y muestra <strong>lo justo</strong> para entender la acción.</p>
               </div>
             </div>
           </div>
           <aside class="notes">
-            Cuatro razones bien distintas. Uno: en buena parte de la
-            población autista el procesamiento visual es una fortaleza
-            relativa. Dos, y esto vale para todos: el habla es efímera, se
-            desvanece; el pictograma permanece. Funciona como una memoria de
-            trabajo externa — la persona no tiene que retener el mensaje en
-            tiempo real para poder actuar, lo procesa a su ritmo, y eso baja
-            la ansiedad y sostiene la autonomía. Tres: la rima semántica —
-            texto e imagen alineados bajan la carga cognitiva. Y cuatro, más
-            de fondo: un buen pictograma destila la esencia de la acción en
-            formas y relaciones espaciales; elude la sintaxis del idioma, no
-            depende de saber leer. Por eso es una infraestructura de acceso
-            verdaderamente universal.
+            Cuatro razones distintas. Uno: en buena parte de la población
+            autista el procesamiento visual es una fortaleza relativa. Dos:
+            el habla es efímera; el pictograma permanece — funciona como una
+            memoria de trabajo externa. Tres: la rima semántica baja la carga
+            cognitiva. Y cuatro: un buen pictograma destila la esencia,
+            elude la sintaxis del idioma, no depende de saber leer.
           </aside>
         </section>
 
-        <!-- 5.2 Tres principios -->
-        <section id="s5-principios" data-background-color="#dbe4ea">
+        <!-- 5.2 Cómo se diseña · principios -->
+        <section id="s5-principios" data-background-color="#d0e2e1">
           <p class="smallcaps">¿cómo se diseña un pictograma accesible?</p>
-          <ol>
-            <li class="fragment">
-              <strong>Capas claras</strong>: qué hace la persona, con qué interactúa
-              y en qué lugar. Juntas forman una instrucción visual coherente.
-            </li>
-            <li class="fragment">
-              <strong>Paso a paso</strong>: los pictogramas funcionan mejor como
-              secuencia de pasos, idealmente nueve o menos.
-            </li>
-            <li class="fragment">
-              <strong>La frase y el dibujo deben decir lo mismo</strong>: cada paso tiene
-              una frase simple que dice exactamente lo que el pictograma muestra.
-              Si no se puede decir simple, el problema no es el dibujo: es el trámite.
-            </li>
+          <ol class="principles">
+            <li class="fragment"><p><strong>Capas claras:</strong> qué hace la persona, con qué interactúa y dónde. Juntas forman una instrucción visual coherente.</p></li>
+            <li class="fragment"><p><strong>Paso a paso:</strong> funcionan mejor como secuencia — idealmente nueve pasos o menos.</p></li>
+            <li class="fragment"><p><strong>La frase y el dibujo dicen lo mismo:</strong> si un paso no se puede decir simple, el problema no es el dibujo — es el trámite.</p></li>
           </ol>
           <aside class="notes">
-            Tres principios. Uno: semántica en capas — acción, elemento,
-            contexto. Dos: secuencia — el pictograma vive en una cadena de
-            pasos que narra la transacción completa. Tres: correlación
-            estricta con el lenguaje llano — y si un paso no se puede decir
-            simple, el problema es el trámite, no el dibujo.
+            Tres principios: semántica en capas (acción, elemento, contexto);
+            secuencia de pasos; y correlación estricta con el lenguaje llano.
           </aside>
         </section>
 
-        <!-- 5.3 Definición de "pictograma" (replicada tal cual del deck
-             pictos-chile, diapositiva /s3-definicion). Sin iframe: es texto
-             con estilos en línea en EB Garamond, ya disponible en el deck. -->
-        <section id="s5-pictos-chile" data-background-color="white">
-          <div style="max-width: 75%; margin: 0 auto;">
-            <h2
-              style="font-family: 'EB Garamond'; font-size: 2.8rem; font-weight: 700; color: #141414; margin-bottom: 0;">
-              pictograma</h2>
-            <p style="font-family: 'EB Garamond'; font-size: 1.2rem; color: #666; margin: .3em 0 1em;">
-              /piktoˈɡɾama/ (sustantivo)
-            </p>
-            <p style="font-family: 'EB Garamond'; font-size: 1.2rem; color: #444; margin-bottom: 1.2em;">
-              Del latín <em>pictus</em> 'pintado' + griego <em>gramma</em> 'algo escrito'; por analogía con ideograma.
-            </p>
-            <p
-              style="font-family: 'EB Garamond'; font-size: 1.7rem; line-height: 145%; color: #141414; font-weight: 400;">
-              Un pictograma es un signo visual predominantemente icónico cuya estructura composicional integra múltiples
-              unidades gráficas reconocibles para expresar, en una sola configuración, estados de cosas, acciones o
-              relaciones; en este sentido opera como una frase visual más que como una palabra visual aislada.
-            </p>
+        <!-- 5.3 Definición de "pictograma" -->
+        <section id="s5-pictos-chile" data-background-color="#ffffff">
+          <div class="definition">
+            <p class="term">pictograma</p>
+            <p class="ipa">/piktoˈɡɾama/ · sustantivo</p>
+            <p class="etym">Del latín <em>pictus</em> ‘pintado’ + griego <em>gramma</em> ‘algo escrito’; por analogía con ideograma.</p>
+            <p class="gloss">Un signo visual predominantemente icónico cuya estructura integra múltiples unidades gráficas reconocibles para expresar, en una sola configuración, estados de cosas, acciones o relaciones. Opera como una <em>frase visual</em>, no como una palabra aislada.</p>
           </div>
           <aside class="notes">
-            Si quieren bajar al detalle: trabajo con esta definición de
-            pictograma. Lo importante: no es solo un ícono. Es una frase
-            visual. Compone múltiples unidades para expresar — en una
-            sola configuración — un estado de cosas, una acción, una
-            relación. Y como es una frase, sirve para actuar en el mundo:
-            pedir, rechazar, decidir, participar.
+            No es solo un ícono: es una frase visual. Compone múltiples
+            unidades para expresar, en una sola configuración, un estado de
+            cosas, una acción, una relación. Y como es una frase, sirve para
+            actuar en el mundo: pedir, rechazar, decidir, participar.
           </aside>
         </section>
 
@@ -503,42 +425,37 @@
 
 
       <!-- =========================================================
-           SECCIÓN 6 — PARTE PRÁCTICA: DEMOS EN IFRAME
+           SECCIÓN 6 — PARTE PRÁCTICA
            ========================================================= -->
       <section>
 
-        <!-- 6.1 Esquema animado: capas de la imagen ↔ partes de la frase -->
-        <section id="s6-capas" data-background-color="#ece4d6">
+        <!-- 6.1 Capas ↔ frase -->
+        <section id="s6-capas" data-background-color="#ece2d1">
           <p class="smallcaps">cómo se construye un paso</p>
-          <div class="p5-host" data-sketch="capas" style="height: 66vh;"></div>
+          <div class="p5-host stretch-visual" data-sketch="capas" style="height: 64vh;"></div>
           <aside class="notes">
-            Este es el corazón de pictos.cl: cada paso es una frase en
-            lenguaje llano que ya viene en capas — la acción, el elemento,
-            el contexto. Cada parte de la frase levanta su capa visual, y
-            las tres capas suman la escena completa. Miren cómo rima: cada
-            palabra vive en la imagen. Por eso la biblioteca de
-            pictogramas.pictos.cl se puede combinar: estas capas permiten
-            narrar nuevos pasos y nuevos trámites.
+            El corazón de pictos.cl: cada paso es una frase en lenguaje llano
+            que ya viene en capas — la acción, el elemento, el contexto. Cada
+            parte de la frase levanta su capa visual, y las tres suman la
+            escena completa. Por eso la biblioteca se puede combinar.
           </aside>
         </section>
 
-        <!-- 6.2 Seguidilla: apoyos pictográficos para votar (campaña real).
-             Fondo igualado al de las imágenes (#e9f1fe) para que cada momento
-             se vea grande y a sangre; el avance se indica con puntitos. -->
-        <section id="s6-votacion" data-background-color="#e9f1fe">
+        <!-- 6.2 Seguidilla de votación -->
+        <section id="s6-votacion" data-background-color="#20294a">
           <div class="picto-seq">
-            <img src="images/votacion/01.png" alt="Portada de la campaña: PICTOS te ayuda a votar">
-            <img src="images/votacion/02.png" class="fragment fade-in" alt="Paso: infórmate de las candidaturas antes de votar">
-            <img src="images/votacion/03.png" class="fragment fade-in" alt="Paso: llega al lugar de votación">
-            <img src="images/votacion/04.png" class="fragment fade-in" alt="Paso: dirígete a tu mesa de votación">
-            <img src="images/votacion/05.png" class="fragment fade-in" alt="Paso: presenta tu carnet a los vocales de mesa">
-            <img src="images/votacion/06.png" class="fragment fade-in" alt="Paso: recibe la papeleta de voto">
-            <img src="images/votacion/07.png" class="fragment fade-in" alt="Paso: dirígete a la cámara secreta">
-            <img src="images/votacion/08.png" class="fragment fade-in" alt="Paso: marca tu preferencia en la papeleta">
-            <img src="images/votacion/09.png" class="fragment fade-in" alt="Paso: dobla la papeleta y sella tu voto">
-            <img src="images/votacion/10.png" class="fragment fade-in" alt="Paso: deposita el voto en la urna">
-            <img src="images/votacion/11.png" class="fragment fade-in" alt="Paso: firma el acta y retira tu carnet">
-            <img src="images/votacion/12.png" class="fragment fade-in" alt="Paso final de la secuencia de votación">
+            <img src="images/votacion/01.png" alt="Portada: PICTOS te ayuda a votar">
+            <img src="images/votacion/02.png" class="fragment fade-in" alt="Infórmate de las candidaturas">
+            <img src="images/votacion/03.png" class="fragment fade-in" alt="Llega al lugar de votación">
+            <img src="images/votacion/04.png" class="fragment fade-in" alt="Dirígete a tu mesa">
+            <img src="images/votacion/05.png" class="fragment fade-in" alt="Presenta tu carnet a los vocales">
+            <img src="images/votacion/06.png" class="fragment fade-in" alt="Recibe la papeleta">
+            <img src="images/votacion/07.png" class="fragment fade-in" alt="Dirígete a la cámara secreta">
+            <img src="images/votacion/08.png" class="fragment fade-in" alt="Marca tu preferencia">
+            <img src="images/votacion/09.png" class="fragment fade-in" alt="Dobla y sella tu voto">
+            <img src="images/votacion/10.png" class="fragment fade-in" alt="Deposita el voto en la urna">
+            <img src="images/votacion/11.png" class="fragment fade-in" alt="Firma el acta y retira tu carnet">
+            <img src="images/votacion/12.png" class="fragment fade-in" alt="Paso final">
             <img src="images/votacion/13.png" class="fragment fade-in" alt="Cierre de la campaña PICTOS">
           </div>
           <div class="seq-dots" aria-hidden="true">
@@ -547,17 +464,14 @@
             <span></span><span></span><span></span>
           </div>
           <aside class="notes">
-            Esta es una campaña real que hicimos con pictogramas.pictos.cl: la
-            secuencia completa de apoyos para votar, uno por lámina. Voy
-            avanzando con un clic — cada apoyo al centro — y así se ve el trámite
-            de principio a fin, sin entrar al sitio. Fíjense en la rima: cada
-            frase vive en su imagen.
+            Campaña real hecha con pictogramas.pictos.cl: la secuencia completa
+            de apoyos para votar, uno por lámina. Voy avanzando con un clic.
+            Fíjense en la rima: cada frase vive en su imagen.
           </aside>
         </section>
 
-        <!-- 6.3 Lanzador de demos: las apps se abren en pestaña nueva
-             (pictos.net no se deja ver bien dentro de un iframe) -->
-        <section id="s6-launcher" data-background-color="#2a0538">
+        <!-- 6.3 Lanzador de demos -->
+        <section id="s6-launcher" data-background-color="#260233">
           <div class="launcher">
             <div class="brand">
               <img src="svg/pictos-iso.svg" alt="PICTOS">
@@ -569,7 +483,7 @@
                 <span>51 servicios · 213 ubicaciones · 699 tareas presenciales documentadas</span>
               </a>
               <a href="https://pictogramas.pictos.cl" target="_blank" rel="noopener">
-                <strong>pictogramas<br>.pictos.cl</strong>
+                <strong>pictogramas.pictos.cl</strong>
                 <span>la biblioteca para armar nuevos pasos</span>
               </a>
               <a href="https://pictos.net" target="_blank" rel="noopener">
@@ -580,39 +494,32 @@
             <p class="hint">cada aplicación se abre en una pestaña nueva</p>
           </div>
           <aside class="notes">
-            No entramos al sitio de pictos.cl: la seguidilla de la campaña de
-            votación ya mostró cómo se ve un trámite real paso a paso. El botón de
-            pictos.cl queda como referencia de escala — 51 servicios, 213
-            ubicaciones, 699 tareas documentadas. La demo en vivo es pictos.net:
-            se abre en una ventana nueva; escribir una frase del contexto
-            educacional — por ejemplo, "la apoderada entrega los documentos de
-            matrícula en la secretaría del colegio" — y dejar correr la cascada.
-            Al terminar, volver a esta pestaña.
+            El botón de pictos.cl queda como referencia de escala — 51
+            servicios, 213 ubicaciones, 699 tareas documentadas. La demo en
+            vivo es pictos.net: escribir una frase del contexto educacional
+            y dejar correr la cascada.
           </aside>
         </section>
 
       </section>
 
 
-      <!-- ===== CIERRE (columna independiente) ===== -->
-      <section id="s7-gracias" data-background-color="#000" data-transition="fade">
+      <!-- ===== CIERRE ===== -->
+      <section id="s7-gracias" data-background-color="#120b16" data-transition="fade">
         <div class="col-2">
-          <div style="text-align: center;">
-            <img src="svg/mediafranca-dark.svg" alt="MediaFranca" width="30%">
+          <div class="center">
+            <img src="svg/mediafranca-dark.svg" alt="MediaFranca" width="62%">
           </div>
-          <div class="invert" style="font-size: 11px; line-height: 18px; letter-spacing: .1ex;">
-            <h2 style="color: white;">Gracias</h2>
-            <p>
-              <strong>PICTOS</strong>: apoyos visuales y explicaciones paso a paso
-              para que las personas entiendan y usen mejor los servicios públicos.
-            </p>
-            <ol>
+          <div class="invert" style="font-size: 1rem; line-height: 1.6;">
+            <h2>Gracias</h2>
+            <p><strong>PICTOS</strong>: apoyos visuales y explicaciones paso a paso para que las personas entiendan y usen mejor los servicios públicos.</p>
+            <ol style="margin:.8em 0">
               <li><a href="https://pictos.cl"><strong>pictos.cl</strong></a> — apoyos para servicios públicos</li>
               <li><a href="https://pictogramas.pictos.cl"><strong>pictogramas.pictos.cl</strong></a> — biblioteca ensamblable</li>
               <li><a href="https://pictos.net"><strong>pictos.net</strong></a> — pictogramas generativos</li>
-              <li><a href="https://github.com/mediafranca/ICAP"><strong>ICAP</strong></a> — marco de evaluación de pictogramas</li>
+              <li><a href="https://github.com/mediafranca/ICAP"><strong>ICAP</strong></a> — marco de evaluación</li>
             </ol>
-            <p><strong>Herbert Spencer González</strong> · hspencer@ead.cl</p>
+            <p style="font-size:.85rem;color:rgba(255,255,255,.7)"><strong>Herbert Spencer González</strong> · hspencer@ead.cl</p>
           </div>
         </div>
         <aside class="notes">
@@ -623,6 +530,7 @@
 
     </div><!-- .slides -->
   </div><!-- .reveal -->
+
   <script type="module" src="./main.js"></script>
 </body>
 
