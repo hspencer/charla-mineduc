@@ -339,26 +339,27 @@ body {
    4 argumentos: grilla clara, número grande, imagen enmarcada
    de forma consistente, jerarquía titular→cuerpo evidente.
    ============================================================ */
-.reveal .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.1em 1.6em; margin-top: .5em; }
-.reveal .why-card {
-  display: grid; grid-template-columns: 92px 1fr; gap: 1em; align-items: start;
-  padding: .3em 0;
+/* Un argumento por diapositiva: figura grande a la izquierda, texto a la derecha */
+.reveal .why-solo {
+  display: grid; grid-template-columns: minmax(0, 40%) minmax(0, 1fr);
+  gap: 2.4em; align-items: center;
+  margin-top: 1.2em; text-align: left;
 }
-.reveal .why-card .fig {
-  position: relative; width: 92px; height: 92px; border-radius: 6px;
-  background: #fff; border: 2px solid var(--ink);
+.reveal .why-solo .fig {
+  position: relative; aspect-ratio: 1; border-radius: 10px;
+  background: #fff; border: 3px solid var(--ink);
   display: flex; align-items: center; justify-content: center; overflow: hidden;
 }
-.reveal .why-card .fig img { width: 100%; height: 100%; object-fit: contain; padding: 4px; }
-.reveal .why-card .fig .num {
-  position: absolute; top: -12px; left: -12px; width: 30px; height: 30px;
+.reveal .why-solo .fig img { width: 100%; height: 100%; object-fit: contain; padding: 6%; }
+.reveal .why-solo .fig .num {
+  position: absolute; top: -.55em; left: -.55em; width: 1.7em; height: 1.7em;
   border-radius: 50%; background: var(--terra); color: #fff;
   display: flex; align-items: center; justify-content: center;
-  font-weight: 700; font-size: .95rem; border: 2px solid var(--bg-s5);
+  font-weight: 700; font-size: 1.9rem; border: 3px solid var(--bg-s5);
 }
-.reveal .why-card .txt h3 { font-size: 1.12rem; margin: .1em 0 .3em; line-height: 1.15; }
-.reveal .why-card .txt p { font-size: .86rem; line-height: 1.42; margin: 0; color: var(--ink-soft); }
-.reveal .why-card .txt p strong { color: var(--ink); }
+.reveal .why-solo .txt h3 { font-size: 2.5rem; margin: 0 0 .35em; line-height: 1.1; }
+.reveal .why-solo .txt p { font-size: 1.45rem; line-height: 1.45; margin: 0; color: var(--ink-soft); }
+.reveal .why-solo .txt p strong { color: var(--ink); }
 
 /* S5 · cómo se diseña — 3 principios numerados grandes */
 .reveal ol.principles { list-style: none; counter-reset: pr; padding: 0; margin: .6em 0 0; }
