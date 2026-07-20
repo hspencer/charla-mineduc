@@ -335,12 +335,6 @@ body {
   display: flex; align-items: center; justify-content: center; overflow: hidden;
 }
 .reveal .why-solo .fig img { width: 100%; height: 100%; object-fit: contain; padding: 6%; }
-.reveal .why-solo .fig .num {
-  position: absolute; top: -.55em; left: -.55em; width: 1.7em; height: 1.7em;
-  border-radius: 50%; background: var(--terra); color: #fff;
-  display: flex; align-items: center; justify-content: center;
-  font-weight: 700; font-size: 1.9rem; border: 3px solid var(--bg-s5);
-}
 .reveal .why-solo .txt h3 { font-size: 2.5rem; margin: 0 0 .35em; line-height: 1.1; }
 .reveal .why-solo .txt p { font-size: 1.45rem; line-height: 1.45; margin: 0; color: var(--ink-soft); }
 .reveal .why-solo .txt p strong { color: var(--ink); }
