@@ -171,8 +171,8 @@ body {
   margin-top: .8rem;
   max-width: 62ch;
 }
-/* La definición bajo el sketch de interacción va a todo el ancho, en una línea */
-#s3-interaccion .caption { max-width: none; white-space: nowrap; font-size: .92rem; }
+/* Bajo un sketch, la leyenda va a todo el ancho y en una sola línea */
+.reveal .caption.one-line { max-width: none; white-space: nowrap; font-size: .92rem; }
 
 /* Nota al pie */
 .reveal .footnote {
