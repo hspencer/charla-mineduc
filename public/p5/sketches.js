@@ -440,7 +440,6 @@ function gaussFactory(parentEl) {
 
       p.fill(INK[0], INK[1], INK[2], 90);
       p.textSize(Math.max(10, p.width * 0.009));
-      p.text('clic para avanzar', 10, 8 + Math.max(15, p.width * 0.017) * 1.6);
     }
   };
 }
@@ -810,7 +809,6 @@ function interaccionFactory(parentEl) {
       p.text(msgs[phase], 10, 8);
       p.fill(INK[0], INK[1], INK[2], 90);
       p.textSize(Math.max(10, p.width * 0.009));
-      p.text('clic para avanzar', 10, 8 + Math.max(15, p.width * 0.017) * 1.6);
     }
   };
 }
@@ -1121,7 +1119,6 @@ function capasFactory(parentEl) {
       p.text(msgs[phase], 10, 8);
       p.fill(INK[0], INK[1], INK[2], 90);
       p.textSize(Math.max(10, p.width * 0.009));
-      p.text('clic para avanzar', 10, 8 + Math.max(15, p.width * 0.017) * 1.6);
     }
   };
 }
